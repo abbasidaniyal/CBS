@@ -1,8 +1,13 @@
 {% extends 'information/base.html' %}
 {% block content %}
-<h2 >Home Page</h2>
 
+<div class="jumbotron">
+    <h2>Home Page</h2>
+</div>
+{% if home_page_fields %}
 <h5 class="text-muted text-center">"{{ home_page_fields.tag_line }}"</h5>
 <p class="lead">{{ home_page_fields.brief_description  }}</p>
+{% endif %}
+
 
 {% endblock  %}

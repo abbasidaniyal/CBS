@@ -6,6 +6,7 @@ djangorestframework==3.9.4
 Markdown==3.1
 Pillow==6.1.0
 progressbar2==3.42.0
+psycopg2==2.8.3
 python-utils==2.3.0
 pytz==2019.1
 six==1.12.0

@@ -3,29 +3,99 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h2 >Contact Us</h2>
+<div class="jumbotron">
+    <h2>Contact Us</h2>
+</div>
 
-<form method="post" class="form">
-    {% csrf_token %}
-    {% if message %}
-    <div class="alert alert-success" role="alert">
-        {{message}}
+<div class="row justify-content-center">
+
+    <div class="col-5">
+        <div class="container">
+
+            <form method="post" class="form">
+                {% csrf_token %}
+                {% if message %}
+                <div class="alert alert-success" role="alert">
+                    {{message}}
+                </div>
+                {% endif %}
+
+                {{ form.non_field_errors }}
+
+
+                <div class="col-7" style="max-width: 450px;min-width: 400px;font-size: 1.3em;font-weight: bold;">
+
+                    {{ form.errors }}
+                    {{ form|crispy }}
+                    <button class="btn btn-success col-5 " type="submit"
+                        style="font-weight:500;font-size: 0.93em;margin-top: 5px">Submit</button>
+
+                </div>
+
+
+
+            </form>
+        </div>
     </div>
-    {% endif %}
 
-    {{ form.non_field_errors }}
-    <div class="form-group">
+    <div class="col-10" style="max-width: 700px;min-width: 500px">
+
+        <center>
+            <iframe height="400" width="500"
+                src="https://maps.google.com/maps?q=Connect%20Building%20Solution%20&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                frameborder="0">
+            </iframe>
+        </center>
 
 
-        <div class="col-4 ">
-            {{ form.errors }}
-            {{ form|crispy }}
+        <div class="row text-center justify-content-around" style="padding: 20px">
+            <div class="col-md-3">
+                <a class="btn-floating blue accent-1"><i class="fas fa-map-marker-alt"></i></a>
+                <p>145 Tower A,
+                    A-4,Logix Technova
+                    Sector 132,Noida,
+                    Uttar Pradesh 201304</p>
+            </div>
+
+            <div class="col-md-3">
+                <a class="btn-floating blue accent-1">
+                    <i class="fa fa-clock" aria-hidden="true">
+                    </i>
+                </a>
+
+                <p>Mon - Sat, 10:00-18:00</p>
+            </div>
+
+            <div class="col-md-3">
+                <a class="btn-floating blue accent-1"><i class="fas fa-phone"></i></a>
+                <p>
+                    <a href="tel:+911204174749">
+                        +91 120 4174749
+                    </a>
+                    <br>
+                    <a href="tel:+911204174749">
+                        +91 120 4174749
+                    </a></p>
+                <!-- <a class="btn-floating blue accent-1"><i class="fas fa-clock-o"></i></a> -->
+
+
+            </div>
+
+            <div class="col-md-3">
+
+                <a class="btn-floating blue accent-1"><i class="fas fa-envelope"></i></a>
+                <p>info@gmail.com</p>
+                <p>sale@gmail.com</p>
+            </div>
         </div>
 
-
     </div>
+    <!--Grid column-->
 
-    <button class="btn btn-success " type="submit">Submit Query </button>
-
-</form>
+    <!-- <div class="col-auto">
+        <div class="container ">
+            ADDRESS
+        </div>
+    </div> -->
+</div>
 {% endblock  %}

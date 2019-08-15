@@ -19,12 +19,12 @@ class HomePage(models.Model):
 
 
 class AboutUsInfo(models.Model):
-    main_description_paragraph_1 = models.CharField(
+    main_description_paragraph_1 = models.TextField(
         "First About Us Paragraph ", max_length=500)
-    main_description_paragraph_2 = models.CharField(
+    main_description_paragraph_2 = models.TextField(
         "Second About Us Paragraph ", max_length=500)
-    main_description_paragraph_3 = models.CharField(
-        "Third About Us Paragraph ", max_length=500)
+    main_description_paragraph_3 = models.TextField(
+        "Third About Us Paragraph ", max_length=1000)
 
     def save(self, *args, **kwargs):
         self.__class__.objects.exclude(id=self.id).delete()
@@ -39,6 +39,11 @@ class AboutUsInfo(models.Model):
 
 
 class Carousel(models.Model):
+    class Meta:
+        
+        verbose_name = 'Slide Show Image'
+        verbose_name_plural = 'Slide Show Images'
+        
     image_carousel = models.ImageField(upload_to="carousel")
     title = models.CharField(max_length=20)
     detail = models.CharField(max_length=80)
@@ -49,7 +54,7 @@ class ContactUs(models.Model):
     name = models.CharField(max_length=50, )
     email = models.EmailField()
     contact_number = models.CharField(max_length=13)
-    query = models.CharField(max_length=500)
+    query = models.TextField("Query")
     query_date = models.DateTimeField(auto_now_add=True)
 
 

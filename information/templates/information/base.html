@@ -9,9 +9,7 @@
     <meta http-equiv=" X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="/media/favicon.ico" type="image/x-icon">
 
-    <!-- 
-    <link href="{%static 'css/all.css'%}" rel="stylesheet">
-    <script defer src="{%static 'js/all.js'%}"></script> -->
+
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -37,14 +35,14 @@
     </style>
 
 
-
+    <script src="https://kit.fontawesome.com/fbc4c5bfe7.js"></script>
 
 
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: lightskyblue">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info sticky-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{% url 'home' %}">
@@ -59,8 +57,8 @@
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto navbar-brand">
-                    <a class="nav-item nav-link {{home_page}}" href="{% url  'home' %}">Home </a>
-                    <a class="nav-item nav-link {{about_page}}" href="{% url 'about_us' %}">About Us</a>
+                    <a class="nav-item nav-link {{home_page}}"    href="{% url  'home' %}">Home </a>
+                    <a class="nav-item nav-link {{about_page}}"   href="{% url 'about_us' %}">About Us</a>
                     <a class="nav-item nav-link {{gallery_page}}" href="{% url 'gallery' %}">Gallery</a>
                     <a class="nav-item nav-link {{contact_page}}" href="{% url 'contact_page' %}">Contact Us</a>
                 </div>
@@ -102,11 +100,11 @@
         {% endblock  %}
 
 
-        <footer class="page-footer font-small mdb-color pt-4">
+        <footer class="page-footer font-small  pt-4" style="background-color: lightgray">
             <div class="container text-center text-md-left">
                 <div class="row text-center text-md-left mt-3 pb-3">
                     <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Connect Building Solution</h6>
+                        <h6 class="text-uppercase mb-4 font-weight-bold"><a href="{% url  'home' %}"> Connect Building Solutions</a></h6>
                         <!-- <h6 class="text mb-4">Pvt.Ltd.</h6> -->
                         <p>This can contain some dummy test. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                             Accusamus maxime consequatur error beatae iure libero incidunt voluptates.</p>
@@ -117,18 +115,18 @@
 
                     <!-- Grid column -->
                     <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Pages</h6>
                         <p>
-                            <a href="#!">MDBootstrap</a>
+                            <a href="{% url  'home' %}">Home</a>
                         </p>
                         <p>
-                            <a href="#!">MDWordPress</a>
+                            <a href="{% url 'about_us' %}">About</a>
                         </p>
                         <p>
-                            <a href="#!">BrandFlow</a>
+                            <a href="{% url 'gallery' %}">Gallery</a>
                         </p>
                         <p>
-                            <a href="#!">Bootstrap Angular</a>
+                            <a href="{% url 'contact_page' %}">Contact</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -139,16 +137,16 @@
                     <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                         <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
                         <p>
-                            <a href="#!">Your Account</a>
+                            <a >Your Account</a>
                         </p>
                         <p>
-                            <a href="#!">Become an Affiliate</a>
+                            <a >Become an Affiliate</a>
                         </p>
                         <p>
-                            <a href="#!">Shipping Rates</a>
+                            <a >Shipping Rates</a>
                         </p>
                         <p>
-                            <a href="#!">Help</a>
+                            <a >Help</a>
                         </p>
                     </div>
 
