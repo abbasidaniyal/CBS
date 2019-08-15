@@ -1,8 +1,26 @@
+{% extends 'information/base.html' %}
 
-    {% extends 'information/base.html' %}
-    
-    {% block content %}
-      <h2>About Us</h2>
+{% block content %}
+<div class="jumbotron">
+  <h1>About Us</h1>
+  <p class="lead">{{about_info.main_description_paragraph_1}}</p>
 
-    {{about_info.main_description}}
-    {% endblock  %}
+</div>
+
+<div class="jumbotron">
+  <p class="lead"> {{about_info.main_description_paragraph_2}}</p>
+  <p class="lead"> {{about_info.main_description_paragraph_3}}</p>
+</div>
+
+<h2>Why us?</h2>
+
+<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h5 class="card-title">Info card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+    </p>
+  </div>
+</div>
+
+{% endblock  %}

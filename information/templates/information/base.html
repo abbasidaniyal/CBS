@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width" , initial-scale=1.0, shrink-to-fit=no>
     <meta http-equiv=" X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="/media/favicon.ico" type="image/x-icon">
-    
-<!-- 
+
+    <!-- 
     <link href="{%static 'css/all.css'%}" rel="stylesheet">
     <script defer src="{%static 'js/all.js'%}"></script> -->
 
@@ -18,9 +18,32 @@
 
     <title>Connect Building Solution</title>
 
+    <style>
+        .fade {
+            animation: fadeInAnimation ease 1s;
+
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+
+
+
+
+
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: lightskyblue">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -45,157 +68,163 @@
         </div>
     </nav>
 
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            {% for x in carousel  %}
+    <div class="fade">
 
-            <div class="carousel-item {% if forloop.first %} active {%     endif %}">
-                <img class="d-block w-100" src="/media/{{ x.image_carousel }}" height=400>
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>{{x.title}}</h5>
-                    <p>{{x.detail}}</p>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                {% for x in carousel  %}
+
+                <div class="carousel-item {% if forloop.first %} active {%     endif %}">
+                    <img class="d-block w-100" src="/media/{{ x.image_carousel }}" height=400>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{x.title}}</h5>
+                        <p>{{x.detail}}</p>
+                    </div>
                 </div>
+
+                {% endfor %}
+
+
+
             </div>
-
-            {% endfor %}
-
-
-
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
 
 
-    {% block content %}
-    {% endblock  %}
+        {% block content %}
+        {% endblock  %}
 
-    <footer class="page-footer font-small mdb-color pt-4">
-        <div class="container text-center text-md-left">
-            <div class="row text-center text-md-left mt-3 pb-3">
-                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Connect Building Solution</h6>
-                    <!-- <h6 class="text mb-4">Pvt.Ltd.</h6> -->
-                    <p>This can contain some dummy test. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Accusamus maxime consequatur error beatae iure libero incidunt voluptates.</p>
-                </div>
-                <!-- Grid column -->
 
-                <hr class="w-100 clearfix d-md-none">
+        <footer class="page-footer font-small mdb-color pt-4">
+            <div class="container text-center text-md-left">
+                <div class="row text-center text-md-left mt-3 pb-3">
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Connect Building Solution</h6>
+                        <!-- <h6 class="text mb-4">Pvt.Ltd.</h6> -->
+                        <p>This can contain some dummy test. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Accusamus maxime consequatur error beatae iure libero incidunt voluptates.</p>
+                    </div>
+                    <!-- Grid column -->
 
-                <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-                    <p>
-                        <a href="#!">MDBootstrap</a>
-                    </p>
-                    <p>
-                        <a href="#!">MDWordPress</a>
-                    </p>
-                    <p>
-                        <a href="#!">BrandFlow</a>
-                    </p>
-                    <p>
-                        <a href="#!">Bootstrap Angular</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
+                    <hr class="w-100 clearfix d-md-none">
 
-                <hr class="w-100 clearfix d-md-none">
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+                        <p>
+                            <a href="#!">MDBootstrap</a>
+                        </p>
+                        <p>
+                            <a href="#!">MDWordPress</a>
+                        </p>
+                        <p>
+                            <a href="#!">BrandFlow</a>
+                        </p>
+                        <p>
+                            <a href="#!">Bootstrap Angular</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
 
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
-                    <p>
-                        <a href="#!">Your Account</a>
-                    </p>
-                    <p>
-                        <a href="#!">Become an Affiliate</a>
-                    </p>
-                    <p>
-                        <a href="#!">Shipping Rates</a>
-                    </p>
-                    <p>
-                        <a href="#!">Help</a>
-                    </p>
-                </div>
+                    <hr class="w-100 clearfix d-md-none">
 
-                <!-- Grid column -->
-                <hr class="w-100 clearfix d-md-none">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+                        <p>
+                            <a href="#!">Your Account</a>
+                        </p>
+                        <p>
+                            <a href="#!">Become an Affiliate</a>
+                        </p>
+                        <p>
+                            <a href="#!">Shipping Rates</a>
+                        </p>
+                        <p>
+                            <a href="#!">Help</a>
+                        </p>
+                    </div>
 
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                    <p>
-                        <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-                    <p>
-                        <i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
-                    <p>
-                        <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                    <p>
-                        <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-                </div>
-                <!-- Grid column -->
+                    <!-- Grid column -->
+                    <hr class="w-100 clearfix d-md-none">
 
-            </div>
-            <!-- Footer links -->
-
-            <hr>
-
-            <!-- Grid row -->
-            <div class="row d-flex align-items-center">
-
-                <!-- Grid column -->
-                <div class="col-md-7 col-lg-8">
-
-                    <!--Copyright-->
-                    <p class="text-center text-md-left">© 2018 Copyright:
-                        <a href="https://mdbootstrap.com/education/bootstrap/">
-                            <strong> MDBootstrap.com</strong>
-                        </a>
-                    </p>
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                        <p>
+                            <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+                        <p>
+                            <i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+                        <p>
+                            <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                        <p>
+                            <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                    </div>
+                    <!-- Grid column -->
 
                 </div>
-                <!-- Grid column -->
+                <!-- Footer links -->
 
-                <!-- Grid column -->
-                <div class="col-md-5 col-lg-4 ml-lg-0">
+                <hr>
 
-                    <!-- Social buttons -->
-                    <div class="text-center text-md-right">
-                        <ul class="list-unstyled list-inline">
-                            <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <i class="fab fa-google-plus-g"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                            </li>
-                        </ul>
+                <!-- Grid row -->
+                <div class="row d-flex align-items-center">
+
+                    <!-- Grid column -->
+                    <div class="col-md-7 col-lg-8">
+
+                        <!--Copyright-->
+                        <p class="text-center text-md-left">© 2018 Copyright:
+                            <a href="https://mdbootstrap.com/education/bootstrap/">
+                                <strong> MDBootstrap.com</strong>
+                            </a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-5 col-lg-4 ml-lg-0">
+
+                        <!-- Social buttons -->
+                        <div class="text-center text-md-right">
+                            <ul class="list-unstyled list-inline">
+                                <li class="list-inline-item">
+                                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                        <i class="fab fa-google-plus-g"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

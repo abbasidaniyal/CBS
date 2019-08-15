@@ -1,10 +1,10 @@
 from django.db import models
-# from stdimage import StdImageField
 
 
 class HomePage(models.Model):
-    tag_line = models.CharField(max_length=100, default="")
-    brief_description = models.CharField(max_length=2000, default="")
+    tag_line = models.CharField("Tagline ", max_length=100,)
+    brief_description = models.CharField(
+        "Small Introduction", max_length=2000,)
 
     def save(self, *args, **kwargs):
         self.__class__.objects.exclude(id=self.id).delete()
@@ -19,7 +19,12 @@ class HomePage(models.Model):
 
 
 class AboutUsInfo(models.Model):
-    main_description = models.CharField(max_length=1000)
+    main_description_paragraph_1 = models.CharField(
+        "First About Us Paragraph ", max_length=500)
+    main_description_paragraph_2 = models.CharField(
+        "Second About Us Paragraph ", max_length=500)
+    main_description_paragraph_3 = models.CharField(
+        "Third About Us Paragraph ", max_length=500)
 
     def save(self, *args, **kwargs):
         self.__class__.objects.exclude(id=self.id).delete()
@@ -46,3 +51,10 @@ class ContactUs(models.Model):
     contact_number = models.CharField(max_length=13)
     query = models.CharField(max_length=500)
     query_date = models.DateTimeField(auto_now_add=True)
+
+
+class Staff(models.Model):
+    staff_name = models.CharField("Name", max_length=50)
+    staff_designation = models.CharField("Designation", max_length=50)
+    staff_picture = models.ImageField("Photo ", upload_to="staff",)
+
