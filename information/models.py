@@ -73,4 +73,9 @@ class ContactUs(models.Model):
 class Staff(models.Model):
     staff_name = models.CharField("Name", max_length=50)
     staff_designation = models.CharField("Designation", max_length=50)
+    staff_about = models.CharField("About Staff", max_length=250,default="")
     staff_picture = models.ImageField("Photo ", upload_to="staff",)
+
+    def __str__(self):
+        return self.staff_name
+    

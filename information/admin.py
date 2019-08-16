@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import HomePage,AboutUsInfo,Carousel,ContactUs,WhyUsCard
+from .models import HomePage,AboutUsInfo,Carousel,ContactUs,WhyUsCard,Staff
 # Register your models here.
 
 class ContactUsAdmin(admin.ModelAdmin):
@@ -28,4 +28,5 @@ admin.site.register(HomePage)
 admin.site.register(AboutUsInfo,AboutUsAdmin)
 admin.site.register(Carousel)
 admin.site.register(ContactUs,ContactUsAdmin)
+admin.site.register(Staff)
 

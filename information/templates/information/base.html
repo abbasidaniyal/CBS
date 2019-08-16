@@ -35,6 +35,28 @@
     </style>
 
 
+    <style>
+        .navbar-default {
+            transition: 500ms ease;
+            background: #17a3b813;
+        }
+
+        .navbar-default.scrolled {
+            background: #17a2b8;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+        $(document).scroll(function () {
+            var $nav = $(".navbar-default");
+            $nav.toggleClass('scrolled', $(this).scrollTop() > 400-$nav.height());
+        });
+
+
+    </script>
+
+
     <script src="https://kit.fontawesome.com/fbc4c5bfe7.js"></script>
 
 
@@ -42,7 +64,7 @@
 
 <body style="overflow-x: hidden;">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info sticky-top">
+    <nav class="navbar navbar-default navbar-expand-lg navbar-dark  fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{% url 'home' %}">
@@ -66,7 +88,7 @@
         </div>
     </nav>
 
-    <div class="fade">
+    
 
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -95,6 +117,8 @@
             </a>
         </div>
 
+        <div class="fade">
+
 
         {% block content %}
         {% endblock  %}
@@ -102,6 +126,7 @@
 
         <footer class="page-footer font-small  pt-4" style="background-color: lightgray;">
             <div class="container text-center text-md-left">
+                <hr>
                 <div class="row text-center text-md-left mt-3 pb-3">
                     <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                         <h6 class="text-uppercase mb-4 font-weight-bold"><a href="{% url  'home' %}"> Connect Building
@@ -208,6 +233,9 @@
             </div>
         </footer>
     </div>
+
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

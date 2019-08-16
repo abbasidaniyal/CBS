@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from .serializers import AboutUsSerializers
-from .models import AboutUsInfo, Carousel, HomePage, ContactUs
+from .models import AboutUsInfo, Carousel, HomePage, ContactUs, Staff
 from django.shortcuts import render
 from .forms import ContactForm
 from django.http import HttpResponseRedirect
@@ -25,9 +25,10 @@ def AboutUsViewSet(request):
     context = {
         'about_info': info,
         'about_page': "active",
+        'staff_list': Staff.objects.all(),
         'carousel': Carousel.objects.all(),
     }
-    print(dir(info.whyuscard_set.values))
+    # print(dir(info.whyuscard_set.values))
     return render(request, 'information/about-us.html', context)
 
 
