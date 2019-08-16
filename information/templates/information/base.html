@@ -10,6 +10,9 @@
     <link rel="shortcut icon" href="/media/favicon.ico" type="image/x-icon">
 
 
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab&display=swap" rel="stylesheet">
+
+
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -17,6 +20,11 @@
     <title>Connect Building Solution</title>
 
     <style>
+        body {
+
+            font-family: 'Roboto', sans-serif;
+        }
+
         .fade {
             animation: fadeInAnimation ease 1s;
 
@@ -45,11 +53,12 @@
     <style>
         .navbar-default {
             transition: 500ms ease;
-            background: #17a3b813;
+            background: #667dffb2;
+
         }
 
         .navbar-default.scrolled {
-            background: #17a2b8;
+            background: #667dff;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -71,7 +80,8 @@
 
 <body style="overflow-x: hidden;">
 
-    <nav class="navbar navbar-default navbar-expand-lg navbar-dark  fixed-top">
+    <nav class="navbar navbar-default navbar-expand-lg navbar-dark  fixed-top"
+        style="font-family: 'Roboto Slab', serif;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{% url 'home' %}">
