@@ -7,38 +7,42 @@
     <h2>Contact Us</h2>
 </div>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center" >
 
-    <div class="col-5">
+    <!-- <div class="col-4"> -->
+        <center>
         <div class="container">
 
-            <form method="post" class="form">
-                {% csrf_token %}
-                {% if message %}
-                <div class="alert alert-success" role="alert">
-                    {{message}}
-                </div>
-                {% endif %}
 
-                {{ form.non_field_errors }}
+                <form method="post" class="form">
+                    {% csrf_token %}
+                    {% if message %}
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                    </div>
+                    {% endif %}
 
-
-                <div class="col-7" style="max-width: 450px;min-width: 400px;font-size: 1.3em;font-weight: bold;">
-
-                    {{ form.errors }}
-                    {{ form|crispy }}
-                    <button class="btn btn-success col-5 " type="submit"
-                        style="font-weight:500;font-size: 0.93em;margin-top: 5px">Submit</button>
-
-                </div>
+                    {{ form.non_field_errors }}
 
 
+                    <div class="col-7"
+                        style="max-width: 450px;min-width: 400px;font-size: 1.3em;font-weight: bold;text-align: left">
 
-            </form>
-        </div>
-    </div>
+                        {{ form.errors }}
+                        {{ form|crispy }}
+                        <button class="btn btn-success col-5 " type="submit"
+                            style="font-weight:500;font-size: 0.93em;margin-top: 5px">Submit</button>
 
-    <div class="col-10" style="max-width: 700px;min-width: 500px; padding-top: 50px">
+                    </div>
+
+
+
+                </form>
+            </div>
+        </center>
+        <!-- </div> -->
+
+    <div class="col-12" style="max-width: 700px;min-width: 500px; padding-top: 50px">
 
         <center>
             <iframe height="400" width="500"
@@ -48,7 +52,7 @@
         </center>
 
 
-        <div class="row text-center justify-content-around" style="padding: 10px">
+        <div class="row text-center justify-content-around" style="padding: 10px;">
 
             <div class="col-md-3">
                 <a class="btn-floating blue accent-1"><i class="fas fa-map-marker-alt"></i></a>
@@ -75,23 +79,23 @@
                         +91 120 4174749
                     </a>
                     <br>
-                    <a href="tel:+911204174749">
-                        +91 120 4174749
+                    <a href="tel:+919312248382">
+                        +91 9312248382
                     </a>
                 </p>
-                <!-- <a class="btn-floating blue accent-1"><i class="fas fa-clock-o"></i></a> -->
-
+                
 
             </div>
 
             <div class="col-md-3">
 
-                <a class="btn-floating blue accent-1"><i class="fas fa-envelope"></i></a>
-                <p>
-                    <a href="mailto:sales@connectbuild.com"> sales@connectbuild.com</a>
-                    <br>
-                    <a href="mailto:info@connectbuild.com"> info@connectbuild.com</a>
-                </p>
+                <a class="btn-floating blue accent-1"><i class="fas fa-envelope"></i>
+                    <p>
+                        <a href="mailto:sales@connectbuild.com"> sales@connectbuild.com</a>
+                        <br>
+                        <a href="mailto:info@connectbuild.com"> info@connectbuild.com</a>
+                    </p>
+                </a>
             </div>
         </div>
 
