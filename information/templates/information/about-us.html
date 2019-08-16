@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="jumbotron">
-  <h1>About Us</h1>
+  <h2>About Us</h2>
   <p class="lead">{{about_info.main_description_paragraph_1}}</p>
 
 </div>
@@ -20,45 +20,29 @@ SOME IMAGE OR GRAPHIC HERE or A QUOTE FROM SOME CLIENT OF SOME REFERENCE
 <div class="container">
   <div class="row justify-content-around">
 
+
+
+    {% for card in about_info.whyuscard_set.all %}
+
     <div class="card text-white bg-info mb-3" style="max-width: 14rem;">
-      <div class="card-header">Header</div>
+      <div class="card-header">
+
+        <h5>
+          {{card.card_header}}
+        </h5>
+      </div>
       <div class="card-body">
-        <h5 class="card-title">Info card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.
+        <p class="card-text">
+          {{card.card_body }}
         </p>
       </div>
     </div>
 
-    <div class="card text-white bg-info mb-3" style="max-width: 14rem;">
-      <div class="card-header">Header</div>
-      <div class="card-body">
-        <h5 class="card-title">Info card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.
-        </p>
-      </div>
-    </div>
+    {% endfor %}
 
-    <div class="card text-white bg-info mb-3" style="max-width: 14rem;">
-      <div class="card-header">Header</div>
-      <div class="card-body">
-        <h5 class="card-title">Info card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.
-        </p>
-      </div>
-    </div>
 
-    <div class="card text-white bg-info mb-3" style="max-width: 14rem;">
-      <div class="card-header">Header</div>
-      <div class="card-body">
-        <h5 class="card-title">Info card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.
-        </p>
-      </div>
-    </div>
+
+
   </div>
 </div>
 

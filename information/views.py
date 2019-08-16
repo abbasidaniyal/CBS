@@ -13,7 +13,7 @@ from django.conf import settings
 def HomePageView(request):
     context = {
         'home_page': "active",
-        'home_page_fields': HomePage.objects.all()[0],
+        'home_page_fields': HomePage.objects.get(),
         'carousel': Carousel.objects.all(),
     }
     return render(request, 'information/index.html', context)
@@ -27,6 +27,7 @@ def AboutUsViewSet(request):
         'about_page': "active",
         'carousel': Carousel.objects.all(),
     }
+    print(dir(info.whyuscard_set.values))
     return render(request, 'information/about-us.html', context)
 
 

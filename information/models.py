@@ -38,12 +38,24 @@ class AboutUsInfo(models.Model):
             return cls()
 
 
+class WhyUsCard(models.Model):
+
+    class Meta:
+        ordering = ('id', )
+
+    card_header = models.CharField(("Why Us Card Header"), max_length=15)
+    card_body = models.CharField(("Why Us Card Body"), max_length=250)
+    
+    card=models.ForeignKey(AboutUsInfo, verbose_name=("Why Us"),
+                      on_delete=models.CASCADE,default=None)
+
+
 class Carousel(models.Model):
     class Meta:
-        
+
         verbose_name = 'Slide Show Image'
         verbose_name_plural = 'Slide Show Images'
-        
+
     image_carousel = models.ImageField(upload_to="carousel")
     title = models.CharField(max_length=20)
     detail = models.CharField(max_length=80)
@@ -62,4 +74,3 @@ class Staff(models.Model):
     staff_name = models.CharField("Name", max_length=50)
     staff_designation = models.CharField("Designation", max_length=50)
     staff_picture = models.ImageField("Photo ", upload_to="staff",)
-
