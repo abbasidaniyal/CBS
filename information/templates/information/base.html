@@ -12,66 +12,21 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab&display=swap" rel="stylesheet">
 
-
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Connect Building Solution</title>
+    <link rel="stylesheet" href="/media/custom_css/base.css">
+        <title>Connect Building Solution</title>
 
-    <style>
-        body {
+    
 
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .fade {
-            animation: fadeInAnimation ease 1s;
-            animation-fill-mode: forwards;
-        }
-
-        @keyframes fadeInAnimation {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .fa-phone {
-            -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
-            -webkit-transform: scaleX(-1);
-            transform: scaleX(-1);
-        }
-    </style>
-
-
-
-    <style>
-        .navbar-default {
-            transition: 500ms ease;
-            background-image: linear-gradient(-90deg, #4CA1AF75 , transparent 50% );
-        }
-
-        .navbar-default.scrolled {
-            /* background: #667dff; */
-            background-image: linear-gradient(-90deg, rgb(52, 175, 194), rgb(155, 211, 221) 70% );
-        }
-    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
-
         $(document).scroll(function () {
             var $nav = $(".navbar-default");
             $nav.toggleClass('scrolled', $(this).scrollTop() > 400 - $nav.height());
         });
-
-
     </script>
-
-
     <script src="https://kit.fontawesome.com/fbc4c5bfe7.js"></script>
 
 
@@ -79,60 +34,9 @@
 
 <body style="overflow-x: hidden;">
 
-    <nav class="navbar navbar-default navbar-expand-lg navbar-dark  fixed-top"
-        style="font-family: 'Roboto Slab', serif;">
-        
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'home' %}">
-                    <img src="/media/logo.png" alt="Connect Building Solution" height="30">
-                </a>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    {%  include  'information/navbar.html' %}
 
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ml-auto navbar-brand">
-                    <a class="nav-item nav-link {{home_page}}" href="{% url  'home' %}">Home </a>
-                    <a class="nav-item nav-link {{about_page}}" href="{% url 'about_us' %}">About Us</a>
-                    <a class="nav-item nav-link {{gallery_page}}" href="{% url 'gallery' %}">Gallery</a>
-                    <a class="nav-item nav-link {{contact_page}}" href="{% url 'contact_page' %}">Contact Us</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-
-
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            {% for x in carousel  %}
-
-            <div class="carousel-item {% if forloop.first %} active {%     endif %}">
-                <img class="d-block w-100" src="/media/{{ x.image_carousel }}" height=400>
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>{{x.title}}</h5>
-                    <p>{{x.detail}}</p>
-                </div>
-            </div>
-
-            {% endfor %}
-
-
-
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
+    {% include 'information/carousel.html' %}
 
     <div class="fade">
 
@@ -140,116 +44,9 @@
         {% block content %}
         {% endblock  %}
 
-
-        <footer class="page-footer font-small  pt-4" style="background-color: lightgray;">
-            <div class="container text-center text-md-left">
-                <hr>
-                <div class="row text-center text-md-left mt-3 pb-3">
-                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold"><a href="{% url  'home' %}"> Connect Building
-                                Solutions Pvt. Ltd.</a></h6>
-                        <!-- <h6 class="text mb-4">Pvt.Ltd.</h6> -->
-                        <p>This can contain some dummy test. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                            Accusamus maxime consequatur error beatae iure libero incidunt voluptates.</p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <hr class="w-100 clearfix d-md-none">
-
-                    <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Pages</h6>
-                        <p>
-                            <a href="{% url  'home' %}">Home</a>
-                        </p>
-                        <p>
-                            <a href="{% url 'about_us' %}">About</a>
-                        </p>
-                        <p>
-                            <a href="{% url 'gallery' %}">Gallery</a>
-                        </p>
-                        <p>
-                            <a href="{% url 'contact_page' %}">Contact</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <hr class="w-100 clearfix d-md-none">
-
-                    <!-- Grid column -->
-                    <!-- <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
-                        <p>
-                            <a>Your Account</a>
-                        </p>
-                        <p>
-                            <a>Become an Affiliate</a>
-                        </p>
-                        <p>
-                            <a>Shipping Rates</a>
-                        </p>
-                        <p>
-                            <a>Help</a>
-                        </p>
-                    </div> -->
-
-                    <!-- Grid column -->
-                    <hr class="w-100 clearfix d-md-none">
-
-                    <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-
-                        <p>
-                            <i class="fas fa-envelope mr-3"></i>
-                            <a href="mailto:sales@connectbuild.com"> sales@connectbuild.com</a>
-                            <br>
-                            <i class="fas fa-envelope mr-3" style="visibility: hidden"></i>
-                            <a href="mailto:info@connectbuild.com"> info@connectbuild.com</a>
-
-                        </p>
-                        <p>
-                            <i class="fas fa-phone mr-3 "></i> <a href="tel:+911204174749">
-                                +91 120 4174749
-                            </a>
-                            <br>
-                            <i class="fas fa-phone mr-3" style="visibility: hidden"></i>
-                            <a href="tel:+919312248382">
-                                +91 9312248382
-                            </a>
-                        </p>
-
-                        <p>
-                            <i class="fas fa-location-arrow mr-3"></i> 145 Tower A, <br>
-                            <i class="fas fa-location-arrow mr-3" style="visibility: hidden"></i>
-                            A-4,Logix Technova <br>
-                            <i class="fas fa-location-arrow mr-3" style="visibility: hidden"></i>
-                            Sector 132,
-                            Noida, <br><i class="fas fa-location-arrow mr-3" style="visibility: hidden"></i> Uttar
-                            Pradesh 201304</p>
-                    </div>
-                    <!-- Grid column -->
-
-                </div>
-                <!-- Footer links -->
-
-                <hr>
-
-
-                <!-- Grid column -->
-
-                <div class="row justify-content-center">
-
-
-                    <p>© 2019 Copyright:
-                        <a href="{% url 'home' %}">
-                            <strong> Connect Building Solutions Pvt. Ltd.</strong>
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </footer>
     </div>
+
+    {% include 'information/footer.html' %}
 
 
 
@@ -263,5 +60,4 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
-
 </html>

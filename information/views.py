@@ -1,9 +1,9 @@
 from rest_framework import viewsets
-from .serializers import AboutUsSerializers
-from .models import AboutUsInfo, Carousel, HomePage, ContactUs, Staff
-from ..our_project.models import Service
+from information.serializers import AboutUsSerializers
+from information.models import AboutUsInfo, Carousel, HomePage, ContactUs, Staff
+from our_project.models import ProvidedService
 from django.shortcuts import render
-from .forms import ContactForm
+from information.forms import ContactForm
 from django.http import HttpResponseRedirect
 import datetime
 from django.core.mail import send_mail
@@ -33,14 +33,14 @@ def AboutUsViewSet(request):
     return render(request, 'information/about-us.html', context)
 
 
+
 def GalleryPageView(request):
 
     context = {
         'gallery_page': "active",
         'carousel': Carousel.objects.all(),
-        'services': Service.objects.all()
+        'services': ProvidedService.objects.all()
     }
-
 
     return render(request, 'information/gallery_page.html', context)
 

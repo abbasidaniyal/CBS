@@ -1,16 +1,31 @@
 {% extends 'information/base.html' %}
 {% block content %}
+
+
 <div class="jumbotron">
-
   <h2>Gallery</h2>
-
-  {% for service in services  %}
-  <p>
-    service
-
-  </p>
-  {% endfor %}
-
-
 </div>
+
+<center>
+  <div class="container" style="margin: 2em">
+    <div class="row">
+      {% for service in services  %}
+
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        
+        <div class="hovereffect">
+          <a href="/gallery-service/{{service.id}}">
+            <img class="img-responsive" src="/media/{{service.title_image}}" alt="">
+          <div class="overlay">
+              <h2>{{ service.name_of_service }}</h2>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</center>
+
+<link rel="stylesheet" href="/media/custom_css/gallery_image.css">
 {% endblock  %}
