@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 from .serializers import AboutUsSerializers
 from .models import AboutUsInfo, Carousel, HomePage, ContactUs, Staff
+from ..our_project.models import Service
 from django.shortcuts import render
 from .forms import ContactForm
 from django.http import HttpResponseRedirect
@@ -37,7 +38,10 @@ def GalleryPageView(request):
     context = {
         'gallery_page': "active",
         'carousel': Carousel.objects.all(),
+        'services': Service.objects.all()
     }
+
+
     return render(request, 'information/gallery_page.html', context)
 
 

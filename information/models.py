@@ -65,8 +65,9 @@ class ContactUs(models.Model):
 
     name = models.CharField(max_length=50, )
     email = models.EmailField()
+    organisation = models.CharField(max_length=50,)
     contact_number = models.CharField(max_length=13)
-    query = models.TextField("Query")
+    query = models.TextField("Comments")
     query_date = models.DateTimeField(auto_now_add=True)
 
 
