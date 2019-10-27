@@ -3,8 +3,7 @@ from django.db import models
 
 class HomePage(models.Model):
     tag_line = models.CharField("Tagline ", max_length=100,)
-    brief_description = models.CharField(
-        "Small Introduction", max_length=2000,)
+    brief_description = models.CharField("Small Introduction", max_length=2000,)
 
     def save(self, *args, **kwargs):
         self.__class__.objects.exclude(id=self.id).delete()

@@ -21,12 +21,32 @@
     
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
+
+
+    {% if home_page == "active" %}
+        <script>
         $(document).scroll(function () {
             var $nav = $(".navbar-default");
-            $nav.toggleClass('scrolled', $(this).scrollTop() > 400 - $nav.height());
+            var $carousel = $("#carouselExampleControls")
+            $nav.toggleClass('scrolled', $(this).scrollTop() > $carousel.height() - $nav.height());
         });
     </script>
+    {% else %}
+
+    <script>
+        $(document).ready(function () {
+            var $nav = $(".navbar-default");
+            var $carousel = $("#carouselExampleControls")
+            $nav.toggleClass('scrolled', $(this).scrollTop() >= -1 );
+        });
+    </script>
+
+
+    {% endif %}
+
+    
+
+
     <script src="https://kit.fontawesome.com/fbc4c5bfe7.js"></script>
 
 
@@ -36,7 +56,13 @@
 
     {%  include  'information/navbar.html' %}
 
+    {% if home_page == "active"  %}
+    
     {% include 'information/carousel.html' %}
+    
+    {% endif %}
+
+
 
     <div class="fade">
 

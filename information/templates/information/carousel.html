@@ -1,8 +1,8 @@
 <div id="carouselExampleControls" class="carousel slide">
     <div class="carousel-inner">
-        {% for x in carousel  %}
+        {% for x in carousel %}
         <div class="carousel-item {% if forloop.first %} active {% endif %}">
-            <img class="d-block w-100" src="/media/{{ x.image_carousel }}" height=400>
+            <img class="d-block w-100" src="/media/{{ x.image_carousel }}" style="height: 100vh;">
             <div class="carousel-caption d-none d-md-block">
                 <h5>{{x.title}}</h5>
                 <p>{{x.detail}}</p>
