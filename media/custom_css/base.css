@@ -1,6 +1,6 @@
 body {
     font-family: "Open Sans", sans-serif;
-    
+
 }
 
 .fade {
@@ -12,6 +12,7 @@ body {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -26,10 +27,13 @@ body {
 
 .navbar-default {
     transition: 500ms ease;
-    background-image: linear-gradient(-90deg, #4CA1AF75, transparent 50%);
+
+    /* background-image: linear-gradient(-90deg, #4CA1AF75, transparent 50%); */
+    background-image: linear-gradient(-90deg, rgb(52, 175, 194), rgba(255, 255, 255, 0.5) 60%);
+    text-align: right;
 }
 
 .navbar-default.scrolled {
     /* background: #667dff; */
-    background-image: linear-gradient(-90deg, rgb(52, 175, 194), rgb(155, 211, 221) 70%);
+    background-image: linear-gradient(-90deg, rgb(52, 175, 194), rgb(155, 211, 221) 60%);
 }
