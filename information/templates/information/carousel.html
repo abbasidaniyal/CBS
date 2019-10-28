@@ -1,22 +1,76 @@
-<div id="carouselExampleControls" class="carousel slide">
-    <div class="carousel-inner">
-        {% for x in carousel %}
-        <div class="carousel-item {% if forloop.first %} active {% endif %}">
-            <img class="d-block w-100" src="/media/{{ x.image_carousel }}" style="height: 100vh;">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>{{x.title}}</h5>
-                <p>{{x.detail}}</p>
+<link rel="stylesheet" href="/media/custom_css/carousel.css">
+
+
+<!--==========================
+    Intro Section
+  ============================-->
+<section id="intro">
+    <div class="intro-container">
+        <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+
+            <ol class="carousel-indicators"></ol>
+
+            <div class="carousel-inner" role="listbox">
+                {% for x in carousel %}
+                <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                    <div class="carousel-background"><img src="/media/{{ x.image_carousel }}" alt=""></div>
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2>{{x.title}}</h2>
+                            <p>{{x.detail}}</p>
+                            <!-- <a href="#featured-services" class="btn-get-started scrollto">Get Started</a> -->
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
             </div>
+
+            <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
         </div>
-        {% endfor %}
     </div>
 
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
+
+</section>
+
+<script>
+    $(document).ready(
+        function () {
+            console.log("WORKING");
+
+            var introCarousel = $(".carousel");
+            var introCarouselIndicators = $(".carousel-indicators");
+            introCarousel.find(".carousel-inner").children(".carousel-item").each(function (index) {
+                (index === 0) ?
+                introCarouselIndicators.append("<li data-target='#introCarousel' data-slide-to='" + index +
+                        "' class='active'></li>"):
+                    introCarouselIndicators.append("<li data-target='#introCarousel' data-slide-to='" +
+                        index + "'></li>");
+
+                $(this).css("background-image", "url('" + $(this).children('.carousel-background').children(
+                    'img').attr('src') + "')");
+                $(this).children('.carousel-background').remove();
+            });
+
+            $(".carousel").on("swipe", function (event, direction, distance, duration, fingerCount, fingerData) {
+                    console.log("Worked");
+
+                    if (direction == 'left') $(this).carousel('next');
+                    if (direction == 'right') $(this).carousel('prev');
+                },
+                // allowPageScroll: "vertical"
+            );
+            console.log("Worked")
+        }
+    )
+</script>

@@ -1,0 +1,40 @@
+ <!--==========================
+      Facts Section
+    ============================-->
+
+
+ <link rel="stylesheet" href="/media/custom_css/facts.css">
+ <script src="/media/lib/waypoints/waypoints.min.js"></script>
+ <script src="/media/lib/counterup/counterup.min.js"></script>
+
+ <section id="facts" class="wow fadeIn">
+     <div class="container">
+
+         <header class="section-header">
+             <h3>Facts</h3>
+             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+         </header>
+
+         <div class="row counters">
+
+             {% for fact in home_page_fields.factcounter_set.all   %}
+
+
+             <div class="col-lg-3 col-6 text-center">
+                 <span data-toggle="counter-up"> {{fact.count_value}} </span>
+                 <p> {{fact.count_title}}</p>
+             </div>
+
+             {% endfor %}
+
+
+         </div>
+
+     </div>
+ </section><!-- #facts -->
+ <script>
+     $('[data-toggle="counter-up"]').counterUp({
+         delay: 10,
+         time: 1000
+     });
+ </script>

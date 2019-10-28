@@ -1,26 +1,32 @@
-<nav class="navbar navbar-default navbar-expand-lg navbar-dark  fixed-top"
-        style="font-family: 'Roboto Slab', serif;">
+<style>
+    .navbar img {
+        height: 10vh;
+        padding: 0%;
+    }
+</style>
 
-        <div class="container-fluid">
-            <div class="navbar-header">
-                
-                <a class="navbar-brand" href="{% url 'home' %}">
-                    <img src="/media/logo.png" alt="Connect Building Solution" height="30">
-                </a>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-default navbar-expand-lg navbar-dark  fixed-top" style="font-family: 'Roboto Slab', serif;">
 
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <div class="container-fluid">
+        <div class="navbar-header">
 
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ml-auto navbar-brand">
-                    <a class="nav-item nav-link {{home_page}}" href="{% url  'home' %}">Home </a>
-                    <a class="nav-item nav-link {{about_page}}" href="{% url 'about_us' %}">About Us</a>
-                    <a class="nav-item nav-link {{gallery_page}}" href="{% url 'gallery' %}">Gallery</a>
-                    <a class="nav-item nav-link {{contact_page}}" href="{% url 'contact_page' %}">Contact Us</a>
-                </div>
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="/media/logo.png" alt="Connect Building Solution">
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto navbar-brand">
+                <a class="nav-item nav-link {{home_page}}" href="{% url  'home' %}">Home </a>
+                <a class="nav-item nav-link {{about_page}}" href="{% url 'about_us' %}">About Us</a>
+                <a class="nav-item nav-link {{gallery_page}}" href="{% url 'gallery' %}">Gallery</a>
+                <a class="nav-item nav-link {{contact_page}}" href="{% url 'contact_page' %}">Contact Us</a>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>

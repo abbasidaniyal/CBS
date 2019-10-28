@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import HomePage,AboutUsInfo,Carousel,ContactUs,WhyUsCard,Staff
+from .models import HomePageInformation,AboutUsInfo,Carousel,ContactUs,WhyUsCard,Staff,FactCounter
 # Register your models here.
 
 class ContactUsAdmin(admin.ModelAdmin):
@@ -23,8 +23,23 @@ class AboutUsAdmin(admin.ModelAdmin):
         WhyUsInline,
     ]
 
+class FactsInline(admin.StackedInline):
 
-admin.site.register(HomePage)
+    model = FactCounter
+    min_num = 2
+    max_num =4
+    ordering = ['-id']
+
+
+
+
+class HomePageAdmin(admin.ModelAdmin):
+    inlines = [
+        FactsInline
+    ]
+
+
+admin.site.register(HomePageInformation,HomePageAdmin)
 admin.site.register(AboutUsInfo,AboutUsAdmin)
 admin.site.register(Carousel)
 admin.site.register(ContactUs,ContactUsAdmin)

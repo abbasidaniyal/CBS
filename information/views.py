@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from information.serializers import AboutUsSerializers
-from information.models import AboutUsInfo, Carousel, HomePage, ContactUs, Staff
-from our_project.models import ProvidedService
+from information.models import AboutUsInfo, Carousel, HomePageInformation, ContactUs, Staff
+from our_project.models import ProvidedService, Client
 from django.shortcuts import render
 from information.forms import ContactForm
 from django.http import HttpResponseRedirect
@@ -10,12 +10,12 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 
-
 def HomePageView(request):
     context = {
         'home_page': "active",
-        'home_page_fields': HomePage.objects.get(),
+        'home_page_fields': HomePageInformation.objects.get(),
         'carousel': Carousel.objects.all(),
+        'clients': Client.objects.all(),
     }
     return render(request, 'information/index.html', context)
 
@@ -31,7 +31,6 @@ def AboutUsViewSet(request):
     }
     # print(dir(info.whyuscard_set.values))
     return render(request, 'information/about-us.html', context)
-
 
 
 def GalleryPageView(request):
@@ -56,7 +55,8 @@ def ContactUsPageView(request):
             query.query_date = datetime.datetime.now()
             query.save()
             message = "Thank you. We will get back to you shortly!"
-            send_mail("New Query from Website",query.query,query.email,['abbasi.daniyal98@gmail.com'],fail_silently=False)
+            send_mail("New Query from Website", query.query, query.email, [
+                      'abbasi.daniyal98@gmail.com'], fail_silently=False)
             form = ContactForm()
         else:
             form = ContactForm(request.POST)
