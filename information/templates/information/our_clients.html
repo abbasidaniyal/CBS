@@ -121,7 +121,7 @@
 
 
     #client {
-        background: url("/media/homepage/homepage-bg2.jpg") center top no-repeat fixed;
+        background: url("/media/homepage/homepage-bg3.jpg") center top no-repeat fixed;
         background-size: cover;
         padding: 60px 0 40px 0;
         position: relative;
@@ -143,6 +143,7 @@
         z-index: 10;
     }
 
+
     #client-name {
         /* font-family: 'Times New Roman', Times, serif; */
         text-align: center;
@@ -150,15 +151,17 @@
 
     }
 
-
-
     #clients {
         padding: 60px 0;
     }
 
+
     #clients img {
         max-width: 100%;
-        opacity: 0.5;
+        opacity: 0.7;
+
+
+        overflow: auto;
         transition: 0.3s;
         padding: 15px 0;
     }
@@ -166,7 +169,6 @@
     #clients img:hover {
         opacity: 1;
     }
-
 </style>
 
 
@@ -180,26 +182,29 @@
             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
         </header>
 
-        <section class="customer-logos slider" id="clients">
+        <section class="customer-logos slider" id="clients"  >
 
             {% for client in clients  %}
+                <div class="slide" >
 
-            <div class="slide">
-                <img src="/media/{{client.client_logo}}" style="border: 2px solid  transparent; align-self: center; ">
-                <center>
 
-                    <span id="client-name">
+                <div class=" container" style=" height: 180px; width: 100%;    ">
 
-                        {{client.client_name}}
+                    <img src="/media/{{client.client_logo}}"  >
 
-                    </span>
-                </center>
+                </div>
+                <div style="text-align: center;">
+
+                    {{client.client_name}}
+                </div>
+
+
+
             </div>
-
-
-            {% endfor %}
+                {% endfor %}
 
         </section>
+
     </div>
 </div>
 
@@ -212,18 +217,38 @@
             autoplaySpeed: 1500,
             arrows: false,
             dots: false,
-            pauseOnHover: true,
+            pauseOnHover: false,
             responsive: [{
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 4
-                }
-            }, {
-                breakpoint: 520,
-                settings: {
-                    slidesToShow: 3
-                }
-            }]
+                    breakpoint: 1250,
+                    settings: {
+                        slidesToShow: 5
+                    }
+                }, {
+                    breakpoint: 1050,
+                    settings: {
+                        slidesToShow: 4
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 3
+                    }
+                }, {
+                    breakpoint: 520,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 300,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                },
+            ]
         });
+
+
     });
 </script>
