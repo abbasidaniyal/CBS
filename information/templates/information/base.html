@@ -35,6 +35,36 @@
 
 <body style="overflow-x: hidden;">
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBmQruM1Jv5RHUGKkbXe-5-QtqA3WqzRHE",
+            authDomain: "connect-building-solutions.firebaseapp.com",
+            databaseURL: "https://connect-building-solutions.firebaseio.com",
+            projectId: "connect-building-solutions",
+            storageBucket: "connect-building-solutions.appspot.com",
+            messagingSenderId: "158087486274",
+            appId: "1:158087486274:web:7a57004f30c88f6258c6db",
+            measurementId: "G-JW2LTVYFN6"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
+
+
+
+
+
+
     <script src="https://kit.fontawesome.com/fbc4c5bfe7.js"></script>
 
     <script src="/media/lib/jquery/jquery.min.js"></script>
@@ -89,10 +119,6 @@
 
 
     {% endif %}
-
-
-
-
 
 </body>
 
