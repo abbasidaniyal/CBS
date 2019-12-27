@@ -5,7 +5,28 @@
     }
 </style>
 
-<nav class="navbar navbar-default navbar-expand-lg navbar-dark  fixed-top" style="font-family: 'Roboto Slab', serif;">
+{% if home_page == "active" %}
+<script>
+    $(document).scroll(function () {
+        var $nav = $(".navbar-default");
+        var $carousel = $("#introCarousel")
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $carousel.height() - $nav.height());
+    });
+</script>
+{% else %}
+
+<script>
+    $(document).ready(function () {
+        var $nav = $(".navbar-default");
+        $nav.toggleClass('scrolled', true);
+    });
+</script>
+
+
+{% endif %}
+
+<nav class="navbar navbar-default navbar-expand-lg navbar-dark navbar-fixed-top fixed-top"
+    style="font-family: 'Roboto Slab', serif;">
 
     <div class="container-fluid">
         <div class="navbar-header">
@@ -22,10 +43,16 @@
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto navbar-brand">
-                <a class="nav-item nav-link {{home_page}}" href="{% url  'home' %}">Home </a>
-                <a class="nav-item nav-link {{about_page}}" href="{% url 'about_us' %}">About Us</a>
-                <a class="nav-item nav-link {{gallery_page}}" href="{% url 'gallery' %}">Gallery</a>
-                <a class="nav-item nav-link {{contact_page}}" href="{% url 'contact_page' %}">Contact Us</a>
+
+
+                <a class="nav-item nav-link {{home_page}}" href="{% url  'home' %}" style="color: black;">Home </a>
+                <a class="nav-item nav-link {{about_page}}" href="{% url 'about_us' %}" style="color: black;">About
+                    Us</a>
+                <a class="nav-item nav-link {{gallery_page}}" href="{% url 'gallery' %}"
+                    style="color: black;">Gallery</a>
+                <a class="nav-item nav-link {{contact_page}}" href="{% url 'contact_page' %}"
+                    style="color: black;">Contact Us</a>
+
             </div>
         </div>
     </div>

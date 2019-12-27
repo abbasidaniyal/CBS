@@ -57,7 +57,7 @@
 
 #intro h2 {
   /* color: #000; */
-  color: red;
+  color: #E9514F;
   margin-bottom: 30px;
   font-size: 48px;
   font-weight: 700;
@@ -67,7 +67,7 @@
   /* color: #000; */
   width: 80%;
   margin: 0 auto 30px auto;
-  color: red;
+  color: #E9514F  ;
 }
 
 #intro .carousel-fade {

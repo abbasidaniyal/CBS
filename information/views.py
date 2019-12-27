@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from information.serializers import AboutUsSerializers
 from information.models import AboutUsInfo, Carousel, HomePageInformation, ContactUs, Staff
-from our_project.models import ProvidedService, Client
+from our_project.models import Service, Client,MyGalleryImage
 from django.shortcuts import render
 from information.forms import ContactForm
 from django.http import HttpResponseRedirect
@@ -27,7 +27,6 @@ def AboutUsViewSet(request):
         'about_info': info,
         'about_page': "active",
         'staff_list': Staff.objects.all(),
-        'carousel': Carousel.objects.all(),
     }
     # print(dir(info.whyuscard_set.values))
     return render(request, 'information/about-us.html', context)
@@ -37,8 +36,8 @@ def GalleryPageView(request):
 
     context = {
         'gallery_page': "active",
-        'carousel': Carousel.objects.all(),
-        'services': ProvidedService.objects.all()
+        
+        'images': MyGalleryImage.objects.all()
     }
 
     return render(request, 'information/gallery_page.html', context)
@@ -69,6 +68,6 @@ def ContactUsPageView(request):
         'message': message,
         'form': form,
         'contact_page': "active",
-        'carousel': Carousel.objects.all(),
+        
     }
     return render(request, 'information/contact-us.html', context)

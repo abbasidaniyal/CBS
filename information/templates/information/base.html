@@ -21,16 +21,6 @@
 
     <title>Connect Building Solution</title>
 
-
-
-
-
-
-
-
-
-
-
 </head>
 
 <body style="overflow-x: hidden;">
@@ -79,7 +69,7 @@
 
 
 
-    <div class="fade">
+    <div class="fade"  {% if home_page != 'active' %}style="padding-top: 10vh;" {% endif %}  >
 
 
         {% block content %}
@@ -90,35 +80,7 @@
     {% include 'information/footer.html' %}
 
 
-
-
-
-
-
-
-
-
-
-
-    {% if home_page == "active" %}
-    <script>
-        $(document).scroll(function () {
-            var $nav = $(".navbar-default");
-            var $carousel = $("#introCarousel")
-            $nav.toggleClass('scrolled', $(this).scrollTop() > $carousel.height() - $nav.height());
-        });
-    </script>
-    {% else %}
-
-    <script>
-        $(document).ready(function () {
-            var $nav = $(".navbar-default");
-            $nav.toggleClass('scrolled', true);
-        });
-    </script>
-
-
-    {% endif %}
+    
 
 </body>
 

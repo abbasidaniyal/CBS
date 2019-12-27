@@ -1,34 +1,71 @@
 {% extends 'information/base.html' %} {% block content %}
 
+<link rel="stylesheet" href="/media/custom_css/gallery_filter.css">
+<!-- 
+<link rel="stylesheet" href="/media/lib/lightbox/css/lightbox.css">
+<script src="/media/lib/lightbox/js/lightbox.js"></script> -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.css">
+<script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+
+
 
 <div class="jumbotron">
     <h2>Gallery</h2>
 </div>
 
+
+
 <div class="container">
-    <h2> Our Services
+
+
+    <!-- Grid row -->
+    <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-12 d-flex justify-content-center mb-5">
+
+            <button type="button" class="btn btn-default filter-button active" onclick="call(this.id)"
+                id="all">All</button>
+            <button type="button" class="btn btn-default filter-button" onclick="call(this.id)"
+                id="products">Products</button>
+            <button type="button" class="btn btn-default filter-button" onclick="call(this.id)"
+                id="service">Services</button>
+
+        </div>
+        <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+    <!-- Grid row -->
+    <div class="row gallery" id="gallery">
+
+        {% for image in images  %}
+        <!-- Grid column -->
+
+        <div class="col-auto">
+            <a href="/media/{{ image.image }}"
+                class="glightbox gallery_product mb-4 h-100 filter fadeIn {{image.content_type}}"
+                data-title="{{image.image_description}} at {{image.project.project_name}} by {{image.project.client.client_name}}">
+
+                <img class="img-fluid img-responsive my-image" src="/media/{{ image.image }}"
+                    style="height: 40vh;object-fit: cover;">
+            </a>
+        </div>
+
+        <!-- Grid column -->
+        {% endfor %}
+
+
+
+
+    </div>
+    <!-- Grid row -->
+
 </div>
 
-
-<center>
-    <div class="container" style="margin: 2em">
-        <div class="row">
-            {% for service in services %}
-
-            <div class="col-xs-12 col-sm-6 col-md-4">
-
-                <div class="hovereffect">
-                    <a href="/gallery-service/{{service.id}}">
-                        <img class="img-responsive" src="/media/{{service.title_image}}" alt="">
-                        <div class="overlay">
-                            <h2>{{ service.name_of_service }}</h2>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</center>
+<script src="/media/lib/custom_js/glightbox_filter.js">
+</script>
 
 <link rel="stylesheet" href="/media/custom_css/gallery_image.css"> {% endblock %}
