@@ -1,5 +1,7 @@
 var lightboxDescription = GLightbox({
-        selector: 'glightbox'
+        selector: 'glightbox',
+        loop: false,
+        loopAtEnd:false
     });
 
 
@@ -29,8 +31,8 @@ var lightboxDescription = GLightbox({
                 item.classList.add('fadeIn', 'glightbox');
                 setTimeout(clean, 500);
             } else {
-                const check = items[index].classList.contains(id);
-                console.log(check);
+                const check = item.classList.contains(id);
+                // console.log(check);
 
                 if (check) {
                     item.classList.remove('d-none');
