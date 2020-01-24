@@ -1,38 +1,72 @@
 {% block content %}
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+    integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+    crossorigin="">
+<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js"
+    integrity="sha512-WXoSHqw/t26DszhdMhOXOkI7qCiv5QWXhH9R7CgvgZMHz1ImlkVQ3uNsiQKu5wwbbxtPzFXd1hK4tzno2VqhpA=="
+    crossorigin=""></script>
+<!-- <link rel="stylesheet" href="screen.css"> -->
+
+<link rel="stylesheet" href="https://www.unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://www.unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+<script src="https://www.unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
 
 
 
 
-<div id="map" ></div>
 
+<section class="jumbotron map-section" style="background-color: rgba(181, 210, 255,0.2)" >
+    <div class="container">
+        <header class="section-header">
+            <h3>Our Reach</h3>
+            <p>Our Network spreads to all parts of India</p>
+        </header>
+        <div id="map"></div>
+    </div>
+</section>
 <style>
-    #map {
+    .map-section #map {
         align-content: center;
+        text-align: center;
         height: 100vh;
-        max-width: 60vh;
     }
 </style>
 <script>
-    addressPoints = [[20.5937, 78.9629,'543'],[20.5937, 78.9629,'543']];
     var tiles = L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
         attribution: '&copy; <a href="//openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ',
-        });
+        minZoom: 5,
+    });
+
+    var southWest = L.latLng(8.4, 66),
+        northEast = L.latLng(37.6, 98),
+        bounds = L.latLngBounds(southWest, northEast);
+
 
     var map = L.map('map', {
         center: L.latLng(20.5937, 78.9629),
         zoom: 5,
-        layers: [tiles]
-    });
+        layers: [tiles],
+        maxBounds: bounds,
 
+    });
+    // addressPoints= [{{DJANGO VARIABLES}]
+    addressPoints = [
+        [20.5937, 68.9629, '543'],
+        [20.5937, 79.9629, '543'],
+        [20.5937, 78.9629, '543'],
+        [20.5937, 78.9629, '543'],
+        [20.5937, 78.9629, '543'],
+        [20.5937, 78.9629, '543'],
+    ];
     var mcg = L.markerClusterGroup({
         chunkedLoading: true,
-        //singleMarkerMode: true,
+        singleMarkerMode: true,
         spiderfyOnMaxZoom: false
     });
-
+    // addressPoints = []
     for (var i = 0; i < addressPoints.length; i++) {
         var a = addressPoints[i];
         var title = a[2];
@@ -42,7 +76,7 @@
         marker.bindPopup(title);
         mcg.addLayer(marker);
     }
-
+    map.setMaxBounds(map.getBounds());
     map.addLayer(mcg);
 </script>
 
