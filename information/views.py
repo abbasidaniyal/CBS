@@ -71,3 +71,15 @@ def ContactUsPageView(request):
         
     }
     return render(request, 'information/contact-us.html', context)
+
+
+
+def ExpertisePageView(request):
+    
+    # context = {
+    #     'gallery_page': "active",
+        
+    #     'images': MyGalleryImage.objects.all()
+    # }
+
+    return render(request, 'information/expertise.html', )

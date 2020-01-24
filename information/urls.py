@@ -9,6 +9,9 @@ urlpatterns = [
     path('about-us/' ,views.AboutUsViewSet,name='about_us'),
     path('contact-us/' ,views.ContactUsPageView,name='contact_page'),
     path('gallery/' ,views.GalleryPageView,name='gallery'),
+    path('expertise/' ,views.ExpertisePageView,name='expertise'),
     path('gallery-service/<int:pk>' , service_views.ServicePageView ,name='gallery-service'),
+    # path('temp/' , views.temp ,name='temp'),
+
 
 ]

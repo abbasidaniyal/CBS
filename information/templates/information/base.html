@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/media/lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/media/custom_css/base.css">
 
@@ -66,21 +67,18 @@
 
     {%  include  'information/navbar.html' %}
 
+        <div class="fade" style="margin-top: 0vh;">
 
+            {% block content %}
+            {% endblock  %}
 
+        </div>
 
-    <div class="fade"  {% if home_page != 'active' %}style="padding-top: 10vh;" {% endif %}  >
-
-
-        {% block content %}
-        {% endblock  %}
-
-    </div>
 
     {% include 'information/footer.html' %}
 
 
-    
+
 
 </body>
 

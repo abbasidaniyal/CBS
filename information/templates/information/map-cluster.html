@@ -1,0 +1,49 @@
+{% block content %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+
+
+
+
+<div id="map" ></div>
+
+<style>
+    #map {
+        align-content: center;
+        height: 100vh;
+        max-width: 60vh;
+    }
+</style>
+<script>
+    addressPoints = [[20.5937, 78.9629,'543'],[20.5937, 78.9629,'543']];
+    var tiles = L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="//openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ',
+        });
+
+    var map = L.map('map', {
+        center: L.latLng(20.5937, 78.9629),
+        zoom: 5,
+        layers: [tiles]
+    });
+
+    var mcg = L.markerClusterGroup({
+        chunkedLoading: true,
+        //singleMarkerMode: true,
+        spiderfyOnMaxZoom: false
+    });
+
+    for (var i = 0; i < addressPoints.length; i++) {
+        var a = addressPoints[i];
+        var title = a[2];
+        var marker = L.marker(new L.LatLng(a[0], a[1]), {
+            title: title
+        });
+        marker.bindPopup(title);
+        mcg.addLayer(marker);
+    }
+
+    map.addLayer(mcg);
+</script>
+
+{% endblock content %}

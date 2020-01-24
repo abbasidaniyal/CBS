@@ -1,4 +1,26 @@
-<footer class="page-footer font-small  pt-4" style="background-color: #D7E4E8;">
+<style>
+footer  p  {
+    color: rgb(250, 211, 218);
+}
+
+footer  h6  {
+    color: rgb(250, 211, 218);
+}
+
+
+footer a  {
+    color: rgb(250, 211, 218);
+    
+}
+
+footer a:hover  {
+    color: rgb(256,256, 256);
+    
+}
+
+
+</style>
+<footer class="page-footer font-small  pt-4" style="background-color:#b93131;color: white;">
         <div class="container text-center text-md-left">
             <hr>
             <div class="row text-center text-md-left mt-3 pb-3">
@@ -17,7 +39,7 @@
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">Pages</h6>
                     <p>
-                        <a href="{% url  'home' %}">Home</a>
+                        <a href="{% url  'home' %}"  >Home</a>
                     </p>
                     <p>
                         <a href="{% url 'about_us' %}">About</a>
@@ -78,7 +100,7 @@
             <div class="row justify-content-center">
                 <p>© 2019 Copyright:
                     <a href="{% url 'home' %}">
-                        <strong> Connect Building Solutions Pvt. Ltd.</strong>
+                         Connect Building Solutions Pvt. Ltd.
                     </a>
                 </p>
             </div>

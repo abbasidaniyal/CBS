@@ -3,9 +3,74 @@
         height: 10vh;
         padding: 0%;
     }
+
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        /* background-color: #f1f1f1; */
+        /* color: black; */
+        min-width:200px;
+        padding-top: 25px;
+        /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+        z-index: 1;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: solid;
+        display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: white;
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+        background-color: rgba(255, 255, 255, 0.603);
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: lightgrey;
+    }
+
+    .dropdown-content a {
+        color: black;
+        font-size: 15px;
+        text-align: center;
+    }
+
+
+    .navbar-default {
+        transition: 500ms ease;
+
+        background: white;
+        text-align: right;
+        font-family: 'Didact Gothic', sans-serif;
+    }
+
+    .jumbotron {
+        background: white;
+    }
+
+    .nav-item {
+        font-size: 15px;
+    }
 </style>
 
-{% if home_page == "active" %}
+<!-- {% if home_page == "active" %}
 <script>
     $(document).scroll(function () {
         var $nav = $(".navbar-default");
@@ -13,31 +78,30 @@
         $nav.toggleClass('scrolled', $(this).scrollTop() > $carousel.height() - $nav.height());
     });
 </script>
-{% else %}
+{% else %} -->
 
-<script>
+<!-- <script>
     $(document).ready(function () {
         var $nav = $(".navbar-default");
         $nav.toggleClass('scrolled', true);
     });
-</script>
+</script> -->
 
 
-{% endif %}
+<!-- {% endif %} -->
 
-<nav class="navbar navbar-default navbar-expand-lg navbar-dark navbar-fixed-top fixed-top"
-    style="font-family: 'Roboto Slab', serif;">
+<nav class="navbar navbar-default navbar-expand-lg navbar-dark fixed-top navbar-fixed-top"
+    style="font-family: 'Didact Gothic', sans-serif; height: 12vh; padding-left: 5vh;">
 
     <div class="container-fluid">
         <div class="navbar-header">
 
             <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="/media/logo.png" alt="Connect Building Solution" style="max-width: 40vw;">
+                <img src="/media/logo.png" alt="Connect Building Solution" style="width: 25vh;height: auto;">
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -46,8 +110,16 @@
 
 
                 <a class="nav-item nav-link {{home_page}}" href="{% url  'home' %}" style="color: black;">Home </a>
-                <a class="nav-item nav-link {{about_page}}" href="{% url 'about_us' %}" style="color: black;">About
-                    Us</a>
+                <a class="nav-item nav-link {{about_page}}" href="{% url 'about_us' %}" style="color: black;">About Us</a>
+                <div class="dropdown">
+                    <div class="dropbtn nav-item nav-link {{expertise_page}}" style="color: black;">Expertise</div>
+
+                    <div class="dropdown-content " style="margin-left: -60px;">
+                        <a href="#">Services</a>
+                        <a href="#">Products</a>
+                        <a href="#">PMC</a>
+                    </div>
+                </div>
                 <a class="nav-item nav-link {{gallery_page}}" href="{% url 'gallery' %}"
                     style="color: black;">Gallery</a>
                 <a class="nav-item nav-link {{contact_page}}" href="{% url 'contact_page' %}"
