@@ -1,33 +1,13 @@
 {% load static %}
-{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width" , initial-scale=1.0, shrink-to-fit=no>
+    <meta content="width=device-width" initial-scale=1.0, name="viewport" shrink-to-fit=no>
     <meta http-equiv=" X-UA-Compatible" content="ie=edge">
 
-
-    <link rel="shortcut icon" href="/media/favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/media/lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/media/custom_css/base.css">
-
-    <link href="/media/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/media/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
-    <title>Connect Building Solution</title>
-
-
-</head>
-
-<body style="overflow-x: hidden;">
-
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -52,35 +32,46 @@
     </script>
 
 
-
-
-
-
-
     <script src="https://kit.fontawesome.com/fbc4c5bfe7.js"></script>
-
-    <script src="/media/lib/jquery/jquery.min.js"></script>
-    <script src="/media/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
 
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/base.css" %}">
 
-    {%  include  'information/navbar.html' %}
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="{% static "third_party/lightbox/css/lightbox.min.css" %}" rel="stylesheet">
 
-        <div class="fade" style="margin-top: 0vh;">
-
-            {% block content %}
-            {% endblock  %}
-
-        </div>
+    <title>Connect Building Solution</title>
 
 
-    {% include 'information/footer.html' %}
+</head>
 
+<body style="overflow-x: hidden;">
 
+{% include  'information/navbar.html' %}
 
+<div class="fade" style="margin-top: 0vh;">
 
+    {% block content %}
+    {% endblock %}
+
+</div>
+{% include 'information/footer.html' %}
 </body>
-
 </html>

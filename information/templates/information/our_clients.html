@@ -1,5 +1,5 @@
+{% load static %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-
 <style>
     h2 {
         text-align: center;
@@ -121,7 +121,7 @@
 
 
     #client {
-        background: url("/media/homepage/homepage-bg3.jpg") center top no-repeat fixed;
+        background: url("{% static "images/homepage-bg3.jpg" %}") center top no-repeat fixed;
         background-size: cover;
         padding: 60px 0 40px 0;
         position: relative;

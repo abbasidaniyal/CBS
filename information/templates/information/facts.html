@@ -1,40 +1,54 @@
- <!--==========================
-      Facts Section
-    ============================-->
+<!--==========================
+     Facts Section
+   ============================-->
+
+{% load static %}
+<link rel="stylesheet" href="{% static "css/facts.css" %}">
+<script src="{% static "third_party/waypoints/waypoints.min.js" %}"></script>
+<script src="{% static "third_party/counterup/counterup.min.js" %}"></script>
+
+<section id="facts" class="wow fadeIn">
+    <div class="container">
+
+        <header class="section-header">
+            <h3>Facts</h3>
+        </header>
+
+        <div class="row counters">
 
 
- <link rel="stylesheet" href="/media/custom_css/facts.css">
- <script src="/media/lib/waypoints/waypoints.min.js"></script>
- <script src="/media/lib/counterup/counterup.min.js"></script>
+            <div class="col-lg-3 col-6 text-center">
+                <p>More than</p>
+                <span data-toggle="counter-up">300</span>
+                <p>Projects</p>
+            </div>
 
- <section id="facts" class="wow fadeIn">
-     <div class="container">
+            <div class="col-lg-3 col-6 text-center">
+                <p>Worked with</p>
+                <span data-toggle="counter-up">100</span>
+                <p>Clients</p>
+            </div>
 
-         <header class="section-header">
-             <h3>Facts</h3>
-             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
-         </header>
+            <div class="col-lg-3 col-6 text-center">
+                <p>Worked in </p>
+                <span data-toggle="counter-up">14</span>
+                <p>States</p>
+            </div>
 
-         <div class="row counters">
-
-             {% for fact in home_page_fields.factcounter_set.all   %}
-
-
-             <div class="col-lg-3 col-6 text-center">
-                 <span data-toggle="counter-up"> {{fact.count_value}} </span>
-                 <p> {{fact.count_title}}</p>
-             </div>
-
-             {% endfor %}
+            <div class="col-lg-3 col-6 text-center">
+                <p>Worked in </p>
+                <span data-toggle="counter-up">14</span>
+                <p>States</p>
+            </div>
 
 
-         </div>
+        </div>
 
-     </div>
- </section><!-- #facts -->
- <script>
-     $('[data-toggle="counter-up"]').counterUp({
-         delay: 10,
-         time: 1000
-     });
- </script>
+    </div>
+</section><!-- #facts -->
+<script>
+    $('[data-toggle="counter-up"]').counterUp({
+        delay: 10,
+        time: 1000
+    });
+</script>

@@ -1,7 +1,5 @@
-from rest_framework import viewsets
-from information.serializers import AboutUsSerializers
-from information.models import AboutUsInfo, Carousel, HomePageInformation, ContactUs, Staff
-from our_project.models import Service, Client,MyGalleryImage
+from information.models import Carousel, ContactUs, Staff
+from our_project.models import  Client, GalleryImage
 from django.shortcuts import render
 from information.forms import ContactForm
 from django.http import HttpResponseRedirect
@@ -13,7 +11,6 @@ from django.conf import settings
 def HomePageView(request):
     context = {
         'home_page': "active",
-        'home_page_fields': HomePageInformation.objects.get(),
         'carousel': Carousel.objects.all(),
         'clients': Client.objects.all(),
     }
@@ -21,10 +18,9 @@ def HomePageView(request):
 
 
 def AboutUsViewSet(request):
-
-    info = AboutUsInfo.objects.get()
+    # info = AboutUsInfo.objects.get()
     context = {
-        'about_info': info,
+        # 'about_info': info,
         'about_page': "active",
         'staff_list': Staff.objects.all(),
     }
@@ -33,11 +29,10 @@ def AboutUsViewSet(request):
 
 
 def GalleryPageView(request):
-
     context = {
         'gallery_page': "active",
-        
-        'images': MyGalleryImage.objects.all()
+
+        'images': GalleryImage.objects.all()
     }
 
     return render(request, 'information/gallery_page.html', context)
@@ -55,7 +50,7 @@ def ContactUsPageView(request):
             query.save()
             message = "Thank you. We will get back to you shortly!"
             send_mail("New Query from Website", query.query, query.email, [
-                      'abbasi.daniyal98@gmail.com'], fail_silently=False)
+                'abbasi.daniyal98@gmail.com'], fail_silently=False)
             form = ContactForm()
         else:
             form = ContactForm(request.POST)
@@ -68,18 +63,10 @@ def ContactUsPageView(request):
         'message': message,
         'form': form,
         'contact_page': "active",
-        
+
     }
     return render(request, 'information/contact-us.html', context)
 
 
-
 def ExpertisePageView(request):
-    
-    # context = {
-    #     'gallery_page': "active",
-        
-    #     'images': MyGalleryImage.objects.all()
-    # }
-
     return render(request, 'information/expertise.html', )

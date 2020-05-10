@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 't@f^-&lhk*o8&k+5ylgp3x)&djx5k!7x^7!1jymn@*7slq9g7o'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -40,13 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'information',
     'our_project',
-    'rest_framework',
     'crispy_forms',
-    
-    # 'smartfields',
 ]
-
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,7 +50,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-SITE_ID = 1
 
 ROOT_URLCONF = 'cbs_backend.urls'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -87,7 +79,6 @@ REST_FRAMEWORK = {
 }
 
 WSGI_APPLICATION = 'cbs_backend.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -129,7 +120,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -143,16 +133,16 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = "/static/"
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static/"),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
@@ -161,5 +151,5 @@ EMAIL_PORT = 587
 # EMAIL_HOST_USER =  os.environ.get("EMAIL_USER")
 # EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASS")
 
-EMAIL_HOST_USER = "daniyalroks@gmail.com" # os.environ.get("EMAIL_USER")
-EMAIL_HOST_PASSWORD = "ckvqurmobmdcgvvl"#os.environ.get("EMAIL_PASS")
+EMAIL_HOST_USER = "daniyalroks@gmail.com"  # os.environ.get("EMAIL_USER")
+EMAIL_HOST_PASSWORD = "ckvqurmobmdcgvvl"  # os.environ.get("EMAIL_PASS")

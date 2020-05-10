@@ -16,7 +16,7 @@
         position: absolute;
         /* background-color: #f1f1f1; */
         /* color: black; */
-        min-width:200px;
+        min-width: 200px;
         padding-top: 25px;
         /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
         z-index: 1;
@@ -52,6 +52,9 @@
         text-align: center;
     }
 
+    .navbar {
+        padding: 0%;
+    }
 
     .navbar-default {
         transition: 500ms ease;
@@ -59,6 +62,10 @@
         background: white;
         text-align: right;
         font-family: 'Didact Gothic', sans-serif;
+    }
+
+    .navbar-collapse {
+        background: white;
     }
 
     .jumbotron {
@@ -69,39 +76,22 @@
         font-size: 15px;
     }
 </style>
+{% load static %}
 
-<!-- {% if home_page == "active" %}
-<script>
-    $(document).scroll(function () {
-        var $nav = $(".navbar-default");
-        var $carousel = $("#introCarousel")
-        $nav.toggleClass('scrolled', $(this).scrollTop() > $carousel.height() - $nav.height());
-    });
-</script>
-{% else %} -->
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-expand-lg navbar-light fixed-top navbar-fixed-top"
+         style="font-family: 'Didact Gothic', sans-serif; height: 12vh;width: 100%; padding: 10px 0px; ">
 
-<!-- <script>
-    $(document).ready(function () {
-        var $nav = $(".navbar-default");
-        $nav.toggleClass('scrolled', true);
-    });
-</script> -->
-
-
-<!-- {% endif %} -->
-
-<nav class="navbar navbar-default navbar-expand-lg navbar-dark fixed-top navbar-fixed-top"
-    style="font-family: 'Didact Gothic', sans-serif; height: 12vh; padding-left: 5vh;">
-
-    <div class="container-fluid">
         <div class="navbar-header">
 
             <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="/media/logo.png" alt="Connect Building Solution" style="width: 25vh;height: auto;">
+                <img src="{% static "images/logo.png" %}" alt="Connect Building Solution"
+                     style="width: 25vh;height: auto;padding-left: 20px;">
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"
+                style="padding-right: 20px;">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -109,23 +99,15 @@
             <div class="navbar-nav ml-auto navbar-brand">
 
 
-                <a class="nav-item nav-link {{home_page}}" href="{% url  'home' %}" style="color: black;">Home </a>
-                <a class="nav-item nav-link {{about_page}}" href="{% url 'about_us' %}" style="color: black;">About Us</a>
-                <div class="dropdown">
-                    <div class="dropbtn nav-item nav-link {{expertise_page}}" style="color: black;">Expertise</div>
-
-                    <div class="dropdown-content " style="margin-left: -60px;">
-                        <a href="#">Services</a>
-                        <a href="#">Products</a>
-                        <a href="#">PMC</a>
-                    </div>
-                </div>
-                <a class="nav-item nav-link {{gallery_page}}" href="{% url 'gallery' %}"
-                    style="color: black;">Gallery</a>
-                <a class="nav-item nav-link {{contact_page}}" href="{% url 'contact_page' %}"
-                    style="color: black;">Contact Us</a>
+                <a class="nav-item nav-link {{ home_page }}" href="{% url  'home' %}" style="color: black;">Home </a>
+                <a class="nav-item nav-link {{ about_page }}" href="{% url 'about_us' %}" style="color: black;">About
+                    Us</a>
+                <a class="nav-item nav-link {{ gallery_page }}" href="{% url 'gallery' %}"
+                   style="color: black;">Gallery</a>
+                <a class="nav-item nav-link {{ contact_page }}" href="{% url 'contact_page' %}"
+                   style="color: black;">Contact Us</a>
 
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</div>

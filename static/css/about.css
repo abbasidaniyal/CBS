@@ -1,10 +1,3 @@
-#about {
-    background: url("/media/homepage/homepage-bg.jpg") center top no-repeat fixed;
-    background-size: cover;
-    padding: 60px 0 40px 0;
-    position: relative;
-}
-
 #about::before {
     content: '';
     position: absolute;
@@ -92,9 +85,6 @@
 }
 
 
-
-
-
 /* Sections Header
 --------------------------------*/
 
@@ -106,9 +96,9 @@
     font-weight: 700;
     position: relative;
     padding-bottom: 15px;
-  }
-  
-  .section-header h3::before {
+}
+
+.section-header h3::before {
     content: '';
     position: absolute;
     display: block;
@@ -117,9 +107,9 @@
     background: #ddd;
     bottom: 1px;
     left: calc(50% - 60px);
-  }
-  
-  .section-header h3::after {
+}
+
+.section-header h3::after {
     content: '';
     position: absolute;
     display: block;
@@ -128,17 +118,17 @@
     background: #18d26e;
     bottom: 0;
     left: calc(50% - 20px);
-  }
-  
-  .section-header p {
+}
+
+.section-header p {
     text-align: center;
     padding-bottom: 30px;
     color: #333;
-  }
-  
-  /* Section with background
-  --------------------------------*/
-  
-  .section-bg {
+}
+
+/* Section with background
+--------------------------------*/
+
+.section-bg {
     background: #f7f7f7;
-  }
+}

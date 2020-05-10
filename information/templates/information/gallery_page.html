@@ -1,156 +1,46 @@
-{% extends 'information/base.html' %} {% block content %}
+{% extends 'information/base.html' %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    <link rel="stylesheet" href="{% static "css/gallery_image.css" %}">
+    <br/><br/><br/><br/>
+    <div class="container">
 
-<link rel="stylesheet" href="/media/custom_css/gallery_filter.css">
-<!-- 
-<link rel="stylesheet" href="/media/lib/lightbox/css/lightbox.css">
-<script src="/media/lib/lightbox/js/lightbox.js"></script> -->
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.css">
-<script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-
-
-<style>
-    .hvrbox,
-    .hvrbox * {
-        box-sizing: border-box;
-    }
-
-    .hvrbox {
-        position: relative;
-        display: inline-block;
-        overflow: hidden;
-        max-width: 100%;
-        height: auto;
-    }
-
-    .hvrbox img {
-        max-width: 100%;
-    }
-
-    .hvrbox .hvrbox-layer_bottom {
-        display: block;
-    }
-
-    .hvrbox .hvrbox-layer_top {
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        left: 15px;
-        right: 15px;
-        bottom: 0;
-        /* width: 90%; */
-        height: 100%;
-        background: rgba(0, 0, 0, 0.6);
-        color: #fff;
-        padding: 15px;
-        -moz-transition: all 0.4s ease-in-out 0s;
-        -webkit-transition: all 0.4s ease-in-out 0s;
-        -ms-transition: all 0.4s ease-in-out 0s;
-        transition: all 0.4s ease-in-out 0s;
-    }
-
-    .hvrbox:hover .hvrbox-layer_top,
-    .hvrbox.active .hvrbox-layer_top {
-        opacity: 1;
-    }
-
-    .hvrbox .hvrbox-text {
-        text-align: center;
-        font-size: 18px;
-        display: inline-block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -moz-transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-    }
-
-    .hvrbox .hvrbox-text_mobile {
-        font-size: 15px;
-        border-top: 1px solid rgb(179, 179, 179);
-        /* for old browsers */
-        border-top: 1px solid rgba(179, 179, 179, 0.7);
-        margin-top: 5px;
-        padding-top: 2px;
-        display: none;
-    }
-
-    .hvrbox.active .hvrbox-text_mobile {
-        display: block;
-    }
-</style>
-
-<div class="jumbotron">
-    <h2>Gallery</h2>
-</div>
-
-
-
-<div class="container">
-
-
-    <!-- Grid row -->
-    <div class="row justify-content-around ">
-
-        <!-- Grid column -->
-        <div class="col-md-12 d-flex justify-content-center mb-5">
-
-            <button type="button" class="btn btn-default filter-button active" onclick="call(this.id)"
-                id="all">All</button>
-            <button type="button" class="btn btn-default filter-button" onclick="call(this.id)"
-                id="products">Products</button>
-            <button type="button" class="btn btn-default filter-button" onclick="call(this.id)"
-                id="service">Services</button>
-
+        <div class="jumbotron">
+            <h2>Gallery</h2>
         </div>
-        <!-- Grid column -->
-
-    </div>
-    <!-- Grid row -->
 
 
-    <!-- Grid row -->
-    <div class="container" id="gallery">
-        <div class="row justify-content-start ">
-
-            {% for image in images  %}
-            <!-- Grid column -->
-
-
-            <a href="/media/{{ image.image }}"
-                class="glightbox hvrbox col-lg-4 col-md-4 col-sm-6 col-xs-12  gallery_product filter fadeIn {{image.content_type}}"
-                data-title="{{image.image_description}} at {{image.project.project_name}} by {{image.project.client.client_name}}">
-
-                <img class="img-fluid " src="/media/{{ image.image }}"
-                    style="object-fit: fill; min-height: 100%;">
-                <!-- <div class="hvrbox"> -->
-
-                <div class="hvrbox-layer_top">
-                    <div class="hvrbox-text">{{image.image_description}}<div class="hvrbox-text_mobile">Tap again to go
-                            further
-                        </div>
-                    </div>
-                    <!-- </div> -->
-                </div>
-
-                <!-- <div class="middle">
-                    <div class="text"></div>
-                </div> -->
-
-            </a>
-
-            <!-- Grid column -->
-
-            {% endfor %}
-        </div>
         <!-- Grid row -->
+        <div class="container" id="gallery">
+            <div class="row justify-content-start">
 
+                {% for image in images %}
+
+                    <a href="/media/{{ image.image }}"
+                       class="glightbox hvrbox col-md-4 fadeIn"
+                       data-title="{{ image.image_description }} at {{ image.project.project_name }} by {{ image.project.client.client_name }}">
+
+                        <img class="img-fluid" src="/media/{{ image.image }}"
+                             style="object-fit: contain;">
+
+                        <div class="hvrbox-layer_top">
+                            <div class="hvrbox-text">{{ image.image_description }}
+                                <div class="hvrbox-text_mobile">Tap again to go further</div>
+                            </div>
+                        </div>
+                    </a>
+
+
+                {% endfor %}
+            </div>
+        </div>
     </div>
-</div>
 
-<script src="/media/lib/custom_js/glightbox_filter.js">
-</script>
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        var lightbox = GLightbox();
+    </script>
+    <script src="{% static '' %}"></script>
 
-<link rel="stylesheet" href="/media/custom_css/gallery_image.css"> {% endblock %}
+{% endblock %}
