@@ -1,0 +1,97 @@
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    /* background-color: #f1f1f1; */
+    /* color: black; */
+    min-width: 200px;
+    padding-top: 25px;
+    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: solid;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: white;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.603);
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: lightgrey;
+}
+
+.dropdown-content a {
+    color: black;
+    font-size: 15px;
+    text-align: center;
+}
+
+.navbar {
+    padding: 0%;
+}
+
+.navbar-default {
+    transition: 500ms ease;
+
+    background: white;
+    text-align: right;
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+.navbar-collapse {
+    background: white;
+}
+
+.jumbotron {
+    background: white;
+}
+
+.nav-item {
+    font-size: 18px;
+    color: black
+}
+
+.navbar img {
+    height: 20vh;
+    padding: 0px;
+}
+
+
+.navbar-nav {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+img.cbs-logo {
+    height: 6vh;
+    width: auto;
+    padding-left: 20px;
+}
+
+nav {
+    font-family: 'Didact Gothic', sans-serif;
+    height: 10vh;
+    width: 100%;
+
+}

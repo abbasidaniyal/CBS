@@ -1,13 +1,14 @@
 #intro {
   display: table;
   width: 100%;
-  height: 100vh;
+  height: 90vh;
+  padding: 0px;
   background: #000;
 }
 
 #intro .carousel-item {
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -15,7 +16,7 @@
 
 #intro .carousel-item::before {
   content: '';
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.10);
   /* background-color: rgba(0, 0, 0, 0.7); */
 
   position: absolute;
@@ -53,21 +54,32 @@
 
 #intro .carousel-content {
   text-align: center;
+  margin-top: 60vh;
+  width: 100%;
+
+  background-color: rgba(0,0,0, 0.5 );
+  alignment: bottom;
 }
 
-#intro h2 {
+#intro h3 {
   /* color: #000; */
-  color: #E9514F;
-  margin-bottom: 30px;
-  font-size: 48px;
+
+  z-index: 2;
+  color: white;
+  font-family: 'Didact Gothic', sans-serif;
+
+  /*margin-bottom: 30px;*/
+  font-size: 40px;
   font-weight: 700;
 }
 
 #intro p {
   /* color: #000; */
-  width: 80%;
+
+  font-family: 'Didact Gothic', sans-serif;
+  width: 100%;
   margin: 0 auto 30px auto;
-  color: #E9514F  ;
+  color: white;
 }
 
 #intro .carousel-fade {

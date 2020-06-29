@@ -1,0 +1,38 @@
+#messages-container {
+    padding: 1em !important;
+    position: fixed !important;
+    top: 6em !important;
+    right: 10em !important;
+    z-index: 1000 !important;
+    max-width: 35% !important;
+}
+
+#messages-container .alert {
+    position: relative;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.85);
+    opacity: 0;
+    animation: message-appear 0.5s ease 0.5s forwards;
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    #messages-container {
+        right: unset !important;
+        max-width: 100% !important;
+    }
+
+    #messages-container .alert {
+        width: 100%;
+    }
+}
+
+@keyframes message-appear {
+    from {
+        top: -2em;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}

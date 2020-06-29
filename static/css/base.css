@@ -1,10 +1,10 @@
 body {
-    font-family:  'Didact Gothic', sans-serif;;
-    
+    font-family: 'Didact Gothic', sans-serif;;
+    padding-top: 10vh;
 }
 
 .fade {
-    animation: fadeInAnimation ease 1s;
+    animation: fadeInAnimation ease 2s;
     animation-fill-mode: forwards;
 }
 
@@ -24,3 +24,12 @@ body {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
 }
+
+section {
+    padding: 15vh 5px 0px 5px;
+    align-items: center;
+    justify-content: center
+}
+
+
+

@@ -1,0 +1,24 @@
+footer p {
+    color: rgb(250, 211, 218);
+}
+
+footer h6 {
+    color: rgb(250, 211, 218);
+}
+
+
+footer a {
+    color: rgb(250, 211, 218);
+
+}
+
+footer a:hover {
+    color: rgb(256, 256, 256);
+
+}
+
+
+.page-footer {
+    background-color: #b93131;
+    color: white;
+}

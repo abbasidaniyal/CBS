@@ -2,7 +2,7 @@
 #facts {
     /* background: url("../img/facts-bg.jpg") center top no-repeat fixed; */
     background-size: cover;
-    padding: 60px 0 60px 0;
+    padding: 5vh 5px ;
     position: relative;
   }
   
@@ -13,7 +13,6 @@
     right: 0;
     top: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.88);
     z-index: 9;
   }
   
@@ -27,7 +26,7 @@
     font-weight: bold;
     font-size: 48px;
     display: block;
-    color: #18d26e;
+    color: #b93131;;
   }
   
   #facts .counters p {
