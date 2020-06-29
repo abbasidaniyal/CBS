@@ -2,26 +2,13 @@
 
 {% block content %}
 
-    {% include 'information/carousel.html' %}
+    {% include 'information/home_page/carousel.html' %}
 
-    <div class="container" style="margin-top: 80px; margin-bottom: 50px; ">
-        <h5 class="text-muted text-center">"Conceptualization to Commissioning"</h5>
-        <br/>
-        <br/>
-        <p class="lead"><em>Connect Building Solutions Pvt. Ltd.</em> undertakes projects from conceptualization to commissioning. We are in  the business of designing, and execution of
-            steel structures, tensile fabric structures, facades, connecting bridges and other architectural elements.
-        </p>
-    </div>
+    {% include "information/home_page/about.html" %}
 
+    {% include "information/home_page/expertise.html" %}
 
-    {% include "information/our_expertise.html" %}
-
-
-    {% include "information/facts.html" %}
-
-
-
-    {% include "information/our_clients.html" %}
+    {% include "information/home_page/clients.html" %}
 
 
 {% endblock %}

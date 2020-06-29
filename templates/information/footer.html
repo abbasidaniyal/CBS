@@ -1,26 +1,4 @@
-<style>
-    footer p {
-        color: rgb(250, 211, 218);
-    }
-
-    footer h6 {
-        color: rgb(250, 211, 218);
-    }
-
-
-    footer a {
-        color: rgb(250, 211, 218);
-
-    }
-
-    footer a:hover {
-        color: rgb(256, 256, 256);
-
-    }
-
-
-</style>
-<footer class="page-footer font-small  pt-4" style="background-color:#b93131;color: white;">
+<footer class="page-footer font-small  pt-4">
     <div class="container text-center text-md-left">
         <hr>
         <div class="row text-center text-md-left mt-3 pb-3">
@@ -28,8 +6,9 @@
                 <h6 class="text-uppercase mb-4 font-weight-bold"><a href="{% url  'home' %}"> Connect Building
                     Solutions Pvt. Ltd.</a></h6>
 
-                <p>This can contain some dummy test. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Accusamus maxime consequatur error beatae iure libero incidunt voluptates.</p>
+                <p>Founded in 2006, CBS has become the go to company for building solutions in India. A large network
+                    spanning across the country helps CBS extend it's services to all the states. With an in-house
+                    engineering and execution team, CBS assures timely delivery of quality work. </p>
             </div>
             <!-- Grid column -->
 
@@ -38,18 +17,52 @@
             <!-- Grid column -->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h6 class="text-uppercase mb-4 font-weight-bold">Pages</h6>
-                <p>
-                    <a href="{% url  'home' %}">Home</a>
-                </p>
-                <p>
-                    <a href="{% url 'about_us' %}">About</a>
-                </p>
-                <p>
-                    <a href="{% url 'gallery' %}">Gallery</a>
-                </p>
-                <p>
-                    <a href="{% url 'contact_page' %}">Contact</a>
-                </p>
+
+                {% if home_page %}
+                    <p>
+                        <a class="scrollto " href="#top">Home </a>
+                    </p>
+                    <p>
+                        <a class="scrollto" href="#about">About </a>
+                    </p>
+                    <p>
+                        <a class="scrollto" href="#expertise-section">Expertise </a>
+                    </p>
+                    <p>
+                        <a class="scrollto" href="#clients">Clients </a>
+                    </p>
+                    <p>
+                        <a href="{% url 'gallery' %}">Gallery</a>
+                    </p>
+                    <p>
+                        <a href="{% url 'contact_page' %}">Contact Us</a>
+                    </p>
+
+
+                {% else %}
+
+                    <p>
+                        <a class="scrollto {{ home_page }}" href="{% url  'home' %}">Home </a>
+                    </p>
+                    <p>
+                        <a class="scrollto" href="{% url  'home' %}#about">About </a>
+                    </p>
+                    <p>
+                        <a class="scrollto" href="{% url  'home' %}#expertise-section">Expertise </a>
+                    </p>
+                    <p>
+                        <a class="scrollto" href="{% url  'home' %}#clients">Clients </a>
+                    </p>
+                    <p>
+                        <a href="{% url 'gallery' %}">Gallery</a>
+                    </p>
+                    <p>
+                        <a href="{% url 'contact_page' %}">Contact Us</a>
+                    </p>
+
+                {% endif %}
+
+
             </div>
             <!-- Grid column -->
 
@@ -98,7 +111,7 @@
         <hr>
         <!-- Grid column -->
         <div class="row justify-content-center">
-            <p>© 2019 Copyright:
+            <p>© 2020 Copyright:
                 <a href="{% url 'home' %}">
                     Connect Building Solutions Pvt. Ltd.
                 </a>

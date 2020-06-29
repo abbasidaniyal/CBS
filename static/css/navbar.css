@@ -95,3 +95,7 @@ nav {
     width: 100%;
 
 }
+
+.navbar-toggler {
+    margin-right: 10px;
+}

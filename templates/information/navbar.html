@@ -1,113 +1,55 @@
-<style>
-    .navbar img {
-        height: 10vh;
-        padding: 0%;
-    }
-
-
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        /* background-color: #f1f1f1; */
-        /* color: black; */
-        min-width: 200px;
-        padding-top: 25px;
-        /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
-        z-index: 1;
-    }
-
-    /* Links inside the dropdown */
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: solid;
-        display: block;
-    }
-
-    /* Change color of dropdown links on hover */
-    .dropdown-content a:hover {
-        background-color: white;
-    }
-
-    /* Show the dropdown menu on hover */
-    .dropdown:hover .dropdown-content {
-        display: block;
-        background-color: rgba(255, 255, 255, 0.603);
-    }
-
-    /* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropdown:hover .dropbtn {
-        background-color: lightgrey;
-    }
-
-    .dropdown-content a {
-        color: black;
-        font-size: 15px;
-        text-align: center;
-    }
-
-    .navbar {
-        padding: 0%;
-    }
-
-    .navbar-default {
-        transition: 500ms ease;
-
-        background: white;
-        text-align: right;
-        font-family: 'Didact Gothic', sans-serif;
-    }
-
-    .navbar-collapse {
-        background: white;
-    }
-
-    .jumbotron {
-        background: white;
-    }
-
-    .nav-item {
-        font-size: 15px;
-    }
-</style>
 {% load static %}
 
-<div class="container-fluid">
-    <nav class="navbar navbar-default navbar-expand-lg navbar-light fixed-top navbar-fixed-top"
-         style="font-family: 'Didact Gothic', sans-serif; height: 12vh;width: 100%; padding: 10px 0px; ">
+<header>
 
-        <div class="navbar-header">
+    <nav class="navbar navbar-default navbar-expand-md navbar-light fixed-top" id="mainNav">
 
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="{% static "images/logo.png" %}" alt="Connect Building Solution"
-                     style="width: 25vh;height: auto;padding-left: 20px;">
-            </a>
+        <div class="navbar-header navbar-brand">
+
+            {% if home_page %}
+
+                <a class="scrollto" href="#top"><img class="cbs-logo" src="{% static "images/logo.png" %}"
+                                                      alt="Connect Building Solution"
+                ></a>
+            {% else %}
+
+                <a class="scrollto" href="{% url 'home' %}"><img class="cbs-logo" src="{% static "images/logo.png" %}"
+                                                                 alt="Connect Building Solution">
+                </a>
+            {% endif %}
+
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"
-                style="padding-right: 20px;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-target"
+                aria-controls="nav-target" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto navbar-brand">
+        <div class="collapse navbar-collapse" id="nav-target">
+
+            <div class="navbar-nav mr-auto">
 
 
-                <a class="nav-item nav-link {{ home_page }}" href="{% url  'home' %}" style="color: black;">Home </a>
-                <a class="nav-item nav-link {{ about_page }}" href="{% url 'about_us' %}" style="color: black;">About
-                    Us</a>
-                <a class="nav-item nav-link {{ gallery_page }}" href="{% url 'gallery' %}"
-                   style="color: black;">Gallery</a>
-                <a class="nav-item nav-link {{ contact_page }}" href="{% url 'contact_page' %}"
-                   style="color: black;">Contact Us</a>
+                {% if home_page %}
+                    <a class="nav-item nav-link scrollto {{ home_page }}" href="#top">Home </a>
+                    <a class="nav-item nav-link scrollto" href="#about">About </a>
+                    <a class="nav-item nav-link scrollto" href="#expertise-section">Expertise </a>
+                    <a class="nav-item nav-link scrollto" href="#clients">Clients </a>
+                {% else %}
+                    <a class="nav-item nav-link {{ home_page }}" href="{% url  'home' %}">Home </a>
+                    <a class="nav-item nav-link scrollto" href="{% url  'home' %}#about">About </a>
+                    <a class="nav-item nav-link scrollto" href="{% url  'home' %}#expertise-section">Expertise </a>
+                    <a class="nav-item nav-link scrollto" href="{% url  'home' %}#clients">Clients </a>
+                {% endif %}
+
+
+            </div>
+
+            <div class="navbar-nav ml-auto">
+
+                <a class="nav-item nav-link {{ gallery_page }}" href="{% url 'gallery' %}">Gallery</a>
+                <a class="nav-item nav-link {{ contact_page }}" href="{% url 'contact_page' %}">Contact Us</a>
 
             </div>
         </div>
     </nav>
-</div>
+</header>

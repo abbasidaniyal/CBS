@@ -1,14 +1,5 @@
 from django.db import models
 
-class Carousel(models.Model):
-    class Meta:
-        verbose_name = 'Slide Show Image'
-        verbose_name_plural = 'Slide Show Images'
-
-    image_carousel = models.ImageField(upload_to="carousel")
-    title = models.CharField(max_length=20)
-    detail = models.CharField(max_length=80)
-
 
 class ContactUs(models.Model):
     name = models.CharField(max_length=50, )

@@ -117,17 +117,6 @@ h2 {
 }
 
 
-#client::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.92);
-    z-index: 9;
-}
-
 #client .container {
     position: relative;
     z-index: 10;
@@ -135,7 +124,7 @@ h2 {
 
 
 #client-name {
-    /* font-family: 'Times New Roman', Times, serif; */
+     font-family: 'Times New Roman', Times, serif;
     text-align: center;
     width: 100%;
 
@@ -154,4 +143,8 @@ h2 {
 
 #clients img:hover {
     opacity: 1;
+}
+
+#clients section {
+    padding-bottom: 10vh;
 }

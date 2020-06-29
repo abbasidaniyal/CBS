@@ -1,212 +1,39 @@
 {% load static %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-<style>
-    h2 {
-        text-align: center;
-        padding: 20px;
-    }
 
-    /* Slider */
+<section id="clients">
+    <div class="container-fluid" id="client">
+        <div class="container">
+            <header class="section-header">
+                <h3>Clients</h3>
+                <p>Over years, Connect Building Solutions has garnered acclaim and admiration from partnership with a
+                    wide group of organisations and corporations. Our connections run deep and our associations,
+                    everlasting.</p>
+            </header>
 
-    .slick-slide {
-        margin: 0px 20px;
-    }
+            <section class="customer-logos slider" id="clients">
 
-    .slick-slide img {
-        width: 100%;
-    }
+                {% for client in clients %}
+                    <div class="slide">
 
-    .slick-slider {
-        position: relative;
-        display: block;
-        box-sizing: border-box;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        -webkit-touch-callout: none;
-        -khtml-user-select: none;
-        -ms-touch-action: pan-y;
-        touch-action: pan-y;
-        -webkit-tap-highlight-color: transparent;
-    }
+                        <div class="container" style=" height: 180px; width: 100%;">
 
-    .slick-list {
-        position: relative;
-        display: block;
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
-    }
+                            <img src="{{ MEDIA_URL }}{{ client.client_logo }}">
 
-    .slick-list:focus {
-        outline: none;
-    }
+                        </div>
+                        <div style="text-align: center;">
 
-    .slick-list.dragging {
-        cursor: pointer;
-        cursor: hand;
-    }
-
-    .slick-slider .slick-track,
-    .slick-slider .slick-list {
-        -webkit-transform: translate3d(0, 0, 0);
-        -moz-transform: translate3d(0, 0, 0);
-        -ms-transform: translate3d(0, 0, 0);
-        -o-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-
-    .slick-track {
-        position: relative;
-        top: 0;
-        left: 0;
-        display: block;
-    }
-
-    .slick-track:before,
-    .slick-track:after {
-        display: table;
-        content: '';
-    }
-
-    .slick-track:after {
-        clear: both;
-    }
-
-    .slick-loading .slick-track {
-        visibility: hidden;
-    }
-
-    .slick-slide {
-        display: none;
-        float: left;
-        height: 100%;
-        min-height: 1px;
-    }
-
-    [dir='rtl'] .slick-slide {
-        float: right;
-    }
-
-    .slick-slide img {
-        display: block;
-    }
-
-    .slick-slide.slick-loading img {
-        display: none;
-    }
-
-    .slick-slide.dragging img {
-        pointer-events: none;
-    }
-
-    .slick-initialized .slick-slide {
-        display: block;
-    }
-
-    .slick-loading .slick-slide {
-        visibility: hidden;
-    }
-
-    .slick-vertical .slick-slide {
-        display: block;
-        height: auto;
-        /* border: 1px solid transparent; */
-    }
-
-    .slick-arrow.slick-hidden {
-        display: none;
-    }
+                            {{ client.client_name }}
+                        </div>
 
 
-    #client {
-        background: url("{% static "images/homepage-bg3.jpg" %}") center top no-repeat fixed;
-        background-size: cover;
-        padding: 60px 0 40px 0;
-        position: relative;
-    }
-
-    #client::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        background: rgba(255, 255, 255, 0.92);
-        z-index: 9;
-    }
-
-    #client .container {
-        position: relative;
-        z-index: 10;
-    }
-
-
-    #client-name {
-        /* font-family: 'Times New Roman', Times, serif; */
-        text-align: center;
-        width: 100%;
-
-    }
-
-    #clients {
-        padding: 60px 0;
-    }
-
-
-    #clients img {
-        max-width: 100%;
-        opacity: 0.7;
-
-
-        overflow: auto;
-        transition: 0.3s;
-        padding: 15px 0;
-    }
-
-    #clients img:hover {
-        opacity: 1;
-    }
-</style>
-
-
-
-<div class="container-fluid" id="client">
-    <div class="container">
-
-
-        <header class="section-header">
-            <h3>Our Clients</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
-        </header>
-
-        <section class="customer-logos slider" id="clients"  >
-
-            {% for client in clients  %}
-                <div class="slide" >
-
-
-                <div class=" container" style=" height: 180px; width: 100%;    ">
-
-                    <img src="/media/{{client.client_logo}}"  >
-
-                </div>
-                <div style="text-align: center;">
-
-                    {{client.client_name}}
-                </div>
-
-
-
-            </div>
+                    </div>
                 {% endfor %}
 
-        </section>
+            </section>
 
+        </div>
     </div>
-</div>
+</section>
 
 <script>
     $(document).ready(function () {
@@ -219,16 +46,16 @@
             dots: false,
             pauseOnHover: false,
             responsive: [{
-                    breakpoint: 1250,
-                    settings: {
-                        slidesToShow: 5
-                    }
-                }, {
-                    breakpoint: 1050,
-                    settings: {
-                        slidesToShow: 4
-                    }
-                },
+                breakpoint: 1250,
+                settings: {
+                    slidesToShow: 5
+                }
+            }, {
+                breakpoint: 1050,
+                settings: {
+                    slidesToShow: 4
+                }
+            },
                 {
                     breakpoint: 768,
                     settings: {
@@ -251,4 +78,5 @@
 
 
     });
+
 </script>

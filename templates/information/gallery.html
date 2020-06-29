@@ -13,33 +13,42 @@
 
         <!-- Grid row -->
         <div class="container" id="gallery">
-            <div class="row justify-content-start">
+            {% if images|length > 0 %}
+                <div class="row justify-content-start">
 
-                {% for image in images %}
+                    {% for image in images %}
 
-                    <a href="/media/{{ image.image }}"
-                       class="glightbox hvrbox col-md-4 fadeIn"
-                       data-title="{{ image.image_description }} at {{ image.project.project_name }} by {{ image.project.client.client_name }}">
+                        <a href="/media/{{ image.image }}"
+                           class="glightbox hvrbox col-md-4 fadeIn"
+                           data-title="{{ image.image_description }} at {{ image.project.project_name }} by {{ image.project.client.client_name }}">
 
-                        <img class="img-fluid" src="/media/{{ image.image }}"
-                             style="object-fit: contain;">
+                            <img class="img-fluid" src="/media/{{ image.image }}"
+                                 style="object-fit: contain;">
 
-                        <div class="hvrbox-layer_top">
-                            <div class="hvrbox-text">{{ image.image_description }}
-                                <div class="hvrbox-text_mobile">Tap again to go further</div>
+                            <div class="hvrbox-layer_top">
+                                <div class="hvrbox-text">{{ image.image_description }}
+                                    <div class="hvrbox-text_mobile">Tap again to go further</div>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
 
 
-                {% endfor %}
-            </div>
+                    {% endfor %}
+
+                </div>
+            {% else %}
+                <div class="jumbotron justify-content-center">
+                    <h4 align="center">Coming Soon</h4>
+                </div>
+            {% endif %}
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script>
         var lightbox = GLightbox();
+
+
     </script>
     <script src="{% static 'gallery_page.html' %}"></script>
 
