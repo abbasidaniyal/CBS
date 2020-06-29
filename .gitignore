@@ -13,7 +13,9 @@
 __pycache__/
 local_settings.py
 media/
-*.sqlite3
+media_root/
+db.sqlite3
+.env
 # db.sqlite
 # media/
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
