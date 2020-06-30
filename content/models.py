@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class ContactUs(models.Model):
+class Query(models.Model):
     name = models.CharField(max_length=50, )
     email = models.EmailField()
     organisation = models.CharField(max_length=50, blank=True)

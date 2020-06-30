@@ -1,0 +1,9 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    {% for client in object_list %}
+        <a href="{% url 'client-detail' client.pk %}">{{ client.client_name }}</a>
+        <img src="{{ MEDIA_URL }}{{ client.client_logo }}">
+        <br/>
+    {% endfor %}
+
+{% endblock %}

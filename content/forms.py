@@ -1,13 +1,13 @@
 from django import forms
-from .models import ContactUs
+from .models import Query
 
 
-class ContactForm(forms.ModelForm):
+class QueryForm(forms.ModelForm):
     class Meta:
-        model = ContactUs
+        model = Query
         fields = ['name', 'email','organisation', 'contact_number', 'query']
-        verbose_name = 'Contact Us'
-        verbose_name_plural = 'Contact Us'
+        verbose_name = 'Query'
+        verbose_name_plural = 'Queries'
 
         widgets = {
             'query': forms.Textarea(attrs={'rows': 4, 'cols': 15}),

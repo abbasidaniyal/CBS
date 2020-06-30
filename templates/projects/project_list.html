@@ -1,0 +1,9 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    {% for project in object_list %}
+        <a href="{% url 'project-detail' project.pk %}">{{ project.project_name }}</a> by
+        <a href="{% url 'client-detail' project.client.pk %}">{{ project.client.client_name }}</a>
+        <br/>
+    {% endfor %}
+
+{% endblock %}

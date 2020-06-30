@@ -4,8 +4,8 @@ from django.core.mail import send_mail
 from django.shortcuts import render, resolve_url
 from django.views.generic import CreateView
 
-from content.forms import ContactForm
-from content.models import ContactUs
+from content.forms import QueryForm
+from content.models import Query
 from projects.models import Client, GalleryImage
 
 
@@ -17,15 +17,15 @@ def HomePageView(request):
     return render( request, 'information/index.html', context )
 
 
-class ContactUsPageView( SuccessMessageMixin, CreateView ):
-    model = ContactUs
-    form_class = ContactForm
+class QueryPageView( SuccessMessageMixin, CreateView ):
+    model = Query
+    form_class = QueryForm
     template_name = "information/contact-us.html"
     success_message = "Thank you. We will get back to you shortly!"
     success_url = '/contact-us'
 
     def get_context_data(self, **kwargs):
-        context = super( ContactUsPageView, self ).get_context_data( **kwargs )
+        context = super( QueryPageView, self ).get_context_data( **kwargs )
         context['contact_page'] = "active"
         return context
 

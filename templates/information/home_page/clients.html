@@ -11,26 +11,22 @@
             </header>
 
             <section class="customer-logos slider" id="clients">
-
                 {% for client in clients %}
-                    <div class="slide">
-
-                        <div class="container" style=" height: 180px; width: 100%;">
-
-                            <img src="{{ MEDIA_URL }}{{ client.client_logo }}">
-
+                    <a href="{% url 'client-detail' client.pk %}">
+                        <div class="slide">
+                            <div class="container" style=" height: 180px; width: 100%;">
+                                <img src="{{ MEDIA_URL }}{{ client.client_logo }}">
+                            </div>
+                            <div style="text-align: center;color: black">
+                                {{ client.client_name }}
+                            </div>
                         </div>
-                        <div style="text-align: center;">
-
-                            {{ client.client_name }}
-                        </div>
-
-
-                    </div>
+                    </a>
                 {% endfor %}
-
             </section>
-
+            <header class="section-header">
+                <h3><a style="color: black;" href="{% url 'client-list' %}">See All Clients</a></h3>
+            </header>
         </div>
     </div>
 </section>
@@ -78,5 +74,12 @@
 
 
     });
+
+
+
+
+
+
+
 
 </script>

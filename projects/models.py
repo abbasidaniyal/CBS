@@ -40,7 +40,7 @@ class Project( models.Model ):
     project_description = models.TextField( "Project Description", max_length=300, )
     architect = models.CharField( "Architect", max_length=50, blank=True )
     expertise = MultiSelectField( choices=EXPERTISE, default=EXPERTISE )
-    expertise = models.IntegerField( "Year Completed" )
+    year = models.IntegerField( "Year Completed" )
 
 
 class GalleryImage( models.Model ):
