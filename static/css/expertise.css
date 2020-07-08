@@ -35,7 +35,7 @@
     padding-top: 8px;
     text-align: center;
     position: absolute;
-    background-color:#b93131;
+    background-color: #b93131;
     /*#18d26e;OLD GREEN */
 
     border-radius: 50%;
@@ -133,4 +133,31 @@
 
 .section-bg {
     background: #f7f7f7;
+}
+
+
+.img-overlay {
+    position: relative;
+    overflow: hidden;
+}
+
+.img-overlay:after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.text-centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
 }
