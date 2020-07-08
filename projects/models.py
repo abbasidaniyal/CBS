@@ -41,6 +41,7 @@ class Project(models.Model):
     architect = models.CharField("Architect", max_length=50, blank=True)
     expertise = MultiSelectField(choices=EXPERTISE, default=EXPERTISE)
     year = models.IntegerField("Year Completed")
+    cover_image = models.ForeignKey('GalleryImage',blank=True, on_delete=models.DO_NOTHING,related_name="project_cover_image")
 
 
 class GalleryImage(models.Model):
