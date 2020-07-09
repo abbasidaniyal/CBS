@@ -1,0 +1,35 @@
+body {
+    font-family: 'Didact Gothic', sans-serif;;
+    padding-top: 10vh;
+}
+
+.fade {
+    animation: fadeInAnimation ease 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fa-phone {
+    filter: none;
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+section {
+    padding: 15vh 5px 0px 5px;
+    align-items: center;
+    justify-content: center
+}
+
+
+

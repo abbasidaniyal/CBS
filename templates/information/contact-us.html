@@ -1,0 +1,125 @@
+{% extends 'information/../core/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="jumbotron">
+    <h2>Contact Us</h2>
+</div>
+
+<div class="container-fluid">
+
+    <div class="row  justify-content-center" style="max-width: 100vw;min-width: 350px;">
+
+        <!-- <div class="col-4"> -->
+        <center>
+            <div class="container">
+
+
+                <form method="post" class="form">
+                    {% csrf_token %}
+                    {% if message %}
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                    </div>
+                    {% endif %}
+
+                    {{ form.non_field_errors }}
+
+
+                    <div class="col-7"
+                        style="max-width: 450px;min-width: 400px;font-size: 1.3em;font-weight: bold;text-align: left">
+
+                        {{ form.errors }}
+                        {{ form|crispy }}
+                        <button class="btn btn-success col-5 " type="submit"
+                            style="font-weight:500;font-size: 0.93em;margin-top: 5px;background-color: #b93131;">Submit</button>
+
+                    </div>
+
+
+
+                </form>
+            </div>
+        </center>
+        <!-- </div> -->
+
+        <style type="text/css">
+            iframe {
+                min-width: 50vw;
+                max-width: 80vw;
+
+                min-height: 350px;
+                max-height: 50vh;
+                padding: 0%;
+            }
+        </style>
+
+        <div class="col-12" style="max-width: 100vh;min-width: 350px; padding-top: 50px">
+
+            <center>
+                <iframe height="400px" width="400px" 
+                    src="https://maps.google.com/maps?q=Connect%20Building%20Solution%20&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0">
+                </iframe>
+            </center>
+
+
+            <div class="row text-center justify-content-around" style="padding: 10px;">
+
+                <div class="col-md-3">
+                    <a class="btn-floating blue accent-1"><i class="fas fa-map-marker-alt"></i></a>
+                    <p>145 Tower A, A-4,<br>
+                        Logix Technova <br>
+                        Sector 132,
+                        Noida,Uttar Pradesh 201304</p>
+                </div>
+
+                <div class="col-md-3">
+                    <a class="btn-floating blue accent-1">
+                        <i class="fa fa-clock" aria-hidden="true">
+                        </i>
+                    </a>
+
+                    <p>Mon - Sat,
+                        <br> 10:00-18:00</p>
+                </div>
+
+                <div class="col-md-3">
+                    <a class="btn-floating blue accent-1"><i class="fas fa-phone"></i></a>
+                    <p>
+                        <a href="tel:+911204174749">
+                            +91 120 4174749
+                        </a>
+                        <br>
+                        <a href="tel:+919312248382">
+                            +91 9312248382
+                        </a>
+                    </p>
+
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <a class="btn-floating blue accent-1"><i class="fas fa-envelope"></i>
+                        <p>
+                            <a href="mailto:sales@connectbuild.com"> sales@connectbuild.com</a>
+                            <br>
+                            <a href="mailto:info@connectbuild.com"> info@connectbuild.com</a>
+                        </p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <!--Grid column-->
+
+        <!-- <div class="col-auto">
+        <div class="container ">
+            ADDRESS
+        </div>
+    </div> -->
+    </div>
+</div>
+{% endblock  %}

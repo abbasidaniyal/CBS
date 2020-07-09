@@ -1,0 +1,56 @@
+{% load static %}
+
+<header>
+
+    <nav class="navbar navbar-default navbar-expand-md navbar-light fixed-top" id="mainNav">
+
+        <div class="navbar-header navbar-brand">
+
+            {% if home_page %}
+
+                <a class="scrollto" href="#top"><img class="cbs-logo" src="{% static "images/logo.png" %}"
+                                                      alt="Connect Building Solution"
+                ></a>
+            {% else %}
+
+                <a class="scrollto" href="{% url 'home' %}"><img class="cbs-logo" src="{% static "images/logo.png" %}"
+                                                                 alt="Connect Building Solution">
+                </a>
+            {% endif %}
+
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-target"
+                aria-controls="nav-target" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav-target">
+
+            <div class="navbar-nav mr-auto">
+
+
+                {% if home_page %}
+                    <a class="nav-item nav-link scrollto {{ home_page }}" href="#top">Home </a>
+                    <a class="nav-item nav-link scrollto" href="#about">About </a>
+                    <a class="nav-item nav-link scrollto" href="#expertise-section">Expertise </a>
+
+                {% else %}
+                    <a class="nav-item nav-link {{ home_page }}" href="{% url  'home' %}">Home </a>
+                    <a class="nav-item nav-link scrollto" href="{% url  'home' %}#about">About </a>
+                    <a class="nav-item nav-link scrollto" href="{% url  'home' %}#expertise-section">Expertise </a>
+
+                {% endif %}
+
+
+            </div>
+
+            <div class="navbar-nav ml-auto">
+                <a class="nav-item nav-link {{ gallery_page }}" href="{% url 'project-list' %}">Projects</a>
+                <a class="nav-item nav-link {{ gallery_page }}" href="{% url 'client-list' %}">Clients</a>
+                <a class="nav-item nav-link {{ gallery_page }}" href="{% url 'gallery' %}">Gallery</a>
+                <a class="nav-item nav-link {{ contact_page }}" href="{% url 'contact_page' %}">Contact Us</a>
+
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,121 @@
+<footer class="page-footer font-small  pt-4">
+    <div class="container text-center text-md-left">
+        <hr>
+        <div class="row text-center text-md-left mt-3 pb-3">
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold"><a href="{% url  'home' %}"> Connect Building
+                    Solutions Pvt. Ltd.</a></h6>
+
+                <p>Founded in 2006, CBS has become the go to company for building solutions in India. A large network
+                    spanning across the country helps CBS extend it's services to all the states. With an in-house
+                    engineering and execution team, CBS assures timely delivery of quality work. </p>
+            </div>
+            <!-- Grid column -->
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Pages</h6>
+
+                {% if home_page %}
+                    <p>
+                        <a class="scrollto " href="#top">Home </a>
+                    </p>
+                    <p>
+                        <a class="scrollto" href="#about">About </a>
+                    </p>
+                    <p>
+                        <a class="scrollto" href="#expertise-section">Expertise </a>
+                    </p>
+                    <p>
+                        <a class="scrollto" href="#clients">Clients </a>
+                    </p>
+                    <p>
+                        <a href="{% url 'gallery' %}">Gallery</a>
+                    </p>
+                    <p>
+                        <a href="{% url 'contact_page' %}">Contact Us</a>
+                    </p>
+
+
+                {% else %}
+
+                    <p>
+                        <a class="scrollto {{ home_page }}" href="{% url  'home' %}">Home </a>
+                    </p>
+                    <p>
+                        <a class="scrollto" href="{% url  'home' %}#about">About </a>
+                    </p>
+                    <p>
+                        <a class="scrollto" href="{% url  'home' %}#expertise-section">Expertise </a>
+                    </p>
+                    <p>
+                        <a class="scrollto" href="{% url  'home' %}#clients">Clients </a>
+                    </p>
+                    <p>
+                        <a href="{% url 'gallery' %}">Gallery</a>
+                    </p>
+                    <p>
+                        <a href="{% url 'contact_page' %}">Contact Us</a>
+                    </p>
+
+                {% endif %}
+
+
+            </div>
+            <!-- Grid column -->
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!-- Grid column -->
+            <hr class="w-100 clearfix d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+
+                <p>
+                    <i class="fas fa-envelope mr-3"></i>
+                    <a href="mailto:sales@connectbuild.com"> sales@connectbuild.com</a>
+                    <br>
+                    <i class="fas fa-envelope mr-3" style="visibility: hidden"></i>
+                    <a href="mailto:info@connectbuild.com"> info@connectbuild.com</a>
+
+                </p>
+                <p>
+                    <i class="fas fa-phone mr-3 "></i> <a href="tel:+911204174749">
+                    +91 120 4174749
+                </a>
+                    <br>
+                    <i class="fas fa-phone mr-3" style="visibility: hidden"></i>
+                    <a href="tel:+919312248382">
+                        +91 9312248382
+                    </a>
+                </p>
+
+                <p>
+                    <i class="fas fa-location-arrow mr-3"></i> 145 Tower A, <br>
+                    <i class="fas fa-location-arrow mr-3" style="visibility: hidden"></i>
+                    A-4,Logix Technova <br>
+                    <i class="fas fa-location-arrow mr-3" style="visibility: hidden"></i>
+                    Sector 132,
+                    Noida, <br><i class="fas fa-location-arrow mr-3" style="visibility: hidden"></i> Uttar
+                    Pradesh 201304</p>
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Footer links -->
+
+        <hr>
+        <!-- Grid column -->
+        <div class="row justify-content-center">
+            <p>© 2020 Copyright:
+                <a href="{% url 'home' %}">
+                    Connect Building Solutions Pvt. Ltd.
+                </a>
+            </p>
+        </div>
+    </div>
+</footer>

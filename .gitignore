@@ -3,6 +3,7 @@
 # Edit at https://www.gitignore.io/?templates=django
 
 .vscode/
+.idea/
 
 
 ### Django ###
@@ -11,6 +12,10 @@
 *.pyc
 __pycache__/
 local_settings.py
+media/
+media_root/
+db.sqlite3
+.env
 # db.sqlite
 # media/
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/

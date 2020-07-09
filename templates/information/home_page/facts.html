@@ -1,0 +1,50 @@
+<!--==========================
+     Facts Section
+   ============================-->
+
+{% load static %}
+
+
+<section id="facts" class="wow fadeIn">
+    <div class="container">
+
+        <header class="section-header">
+            <h3>Facts</h3>
+        </header>
+
+        <div class="row counters">
+
+
+            <div class="col-lg-3 col-6 text-center">
+                <p>More than</p>
+                <span data-toggle="counter-up">300</span>
+                <p>Projects</p>
+            </div>
+
+            <div class="col-lg-3 col-6 text-center">
+                <p>Worked with over</p>
+                <span data-toggle="counter-up">100</span>
+                <p>Clients</p>
+            </div>
+
+            <div class="col-lg-3 col-6 text-center">
+                <p>Worked in </p>
+                <span data-toggle="counter-up">14</span>
+                <p>States in India</p>
+            </div>
+
+            <div class="col-lg-3 col-6 text-center">
+                <p>Active since </p>
+                <span data-toggle="counter-up">2006</span>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $('[data-toggle="counter-up"]').counterUp({
+        delay: 10,
+        time: 1000
+    });
+</script>

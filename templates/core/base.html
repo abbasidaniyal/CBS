@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width" initial-scale=1.0, name="viewport" shrink-to-fit=no>
+    <meta http-equiv=" X-UA-Compatible" content="ie=edge">
+
+    {% include "core/imports.html" %}
+
+
+    <title>Connect Building Solution</title>
+
+
+</head>
+
+<body id="top">
+
+{% include  'core/navbar.html' %}
+
+{% if messages %}
+    <div id="messages-container" class="content container">
+
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissible">
+                <em>{{ message }}</em>
+                <button class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<main class="fade" >
+
+    {% block content %}
+    {% endblock %}
+</main>
+
+{% include 'core/footer.html' %}
+</body>
+</html>

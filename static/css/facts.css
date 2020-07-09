@@ -1,0 +1,43 @@
+
+#facts {
+    /* background: url("../img/facts-bg.jpg") center top no-repeat fixed; */
+    background-size: cover;
+    padding: 5vh 5px ;
+    position: relative;
+  }
+  
+  #facts::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9;
+  }
+  
+  #facts .container {
+    position: relative;
+    z-index: 10;
+  }
+  
+  #facts .counters span {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 48px;
+    display: block;
+    color: #b93131;;
+  }
+  
+  #facts .counters p {
+    padding: 0;
+    margin: 0 0 20px 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #111;
+  }
+  
+  #facts .facts-img {
+    text-align: center;
+    padding-top: 30px;
+  }
