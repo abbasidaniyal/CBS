@@ -33,12 +33,12 @@
                     <a class="nav-item nav-link scrollto {{ home_page }}" href="#top">Home </a>
                     <a class="nav-item nav-link scrollto" href="#about">About </a>
                     <a class="nav-item nav-link scrollto" href="#expertise-section">Expertise </a>
-                    <a class="nav-item nav-link scrollto" href="#clients">Clients </a>
+
                 {% else %}
                     <a class="nav-item nav-link {{ home_page }}" href="{% url  'home' %}">Home </a>
                     <a class="nav-item nav-link scrollto" href="{% url  'home' %}#about">About </a>
                     <a class="nav-item nav-link scrollto" href="{% url  'home' %}#expertise-section">Expertise </a>
-                    <a class="nav-item nav-link scrollto" href="{% url  'home' %}#clients">Clients </a>
+
                 {% endif %}
 
 
@@ -46,6 +46,7 @@
 
             <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link {{ gallery_page }}" href="{% url 'project-list' %}">Projects</a>
+                <a class="nav-item nav-link {{ gallery_page }}" href="{% url 'client-list' %}">Clients</a>
                 <a class="nav-item nav-link {{ gallery_page }}" href="{% url 'gallery' %}">Gallery</a>
                 <a class="nav-item nav-link {{ contact_page }}" href="{% url 'contact_page' %}">Contact Us</a>
 

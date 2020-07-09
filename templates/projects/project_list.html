@@ -1,9 +1,73 @@
 {% extends 'core/base.html' %}
 {% block content %}
-    {% for project in object_list %}
-        <a href="{% url 'project-detail' project.pk %}">{{ project.project_name }}</a> by
-        <a href="{% url 'client-detail' project.client.pk %}">{{ project.client.client_name }}</a>
-        <br/>
-    {% endfor %}
 
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/client_list.css" %}">
+    <div class="container">
+
+
+        <div class="jumbotron">
+            <header class="section-header">
+                <h3>Projects</h3>
+            </header>
+        </div>
+
+        <div class="row justify-content-start">
+
+            {% for project in object_list %}
+                <!-- Card Light -->
+                <div class="shadow col-lg-4  bg-white rounded">
+                    <div class="card text-center border-n">
+                        <!-- Card image -->
+                        <div class="view img-overlay">
+                            <img class="card-img-top"
+                                 src="{{ MEDIA_URL }}{{ project.cover_image.image }}"
+                                 alt="{{ project.project_name }}">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body ">
+                            <!-- Title -->
+                            <h4 class="card-title">{{ project.project_name }}</h4>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                <a class="card-link"
+                                   href="{% url 'client-detail' project.client.slug %}">{{ project.client.client_name }}</a>
+                            </h6>
+                            <hr>
+                            <p class="card-text">
+                                {{ project.project_description }}
+                            </p>
+                            <p class="card-text">
+                                City : {{ project.city }}
+                            </p>
+                            <p class="card-text">
+                                Architect : {{ project.architect }}
+                            </p>
+                            <p class="card-text">
+                                Year : {{ project.year }}
+                            </p>
+
+                            <p class="card-text">
+                                {{ project.expertise }}
+                            </p>
+
+
+                            <a href="{% url 'project-detail' project.slug %}" class="card-link">
+                                Know More
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- Card Light -->
+
+
+    </div>
 {% endblock %}

@@ -3,68 +3,81 @@
     {% load static %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
     <link rel="stylesheet" href="{% static "css/gallery_image.css" %}">
+    <link rel="stylesheet" href="{% static "css/client_list.css" %}">
 
     <div class="container">
-        Project Name : {{ object.project_name }}
-        <br/>
-        Project Description : {{ object.project_description }}
-        <br/>
-        Project Location : {{ object.city }}
-        <br/>
-        Client : <a href="{% url 'client-detail'  object.client.pk %}"> {{ object.client.client_name }} </a>
-        <br/>
-        Expertise : {{ object.expertise }}
-        <br/>
-    </div>
+        <div class="jumbotron">
+            <header class="section-header">
+                <h3>{{ object.project_name }}</h3>
+            </header>
+        </div>
+        <p class="text-center">
+            <strong>Project Description :</strong> {{ object.project_description }}
+        </p>
+        <p class="text-center">
+            <strong>Project Location :</strong> {{ object.city }}
+        </p>
+        <p class="text-center">
+            <strong>Client :</strong> <a
+                href="{% url 'client-detail'  object.client.slug %}"> {{ object.client.client_name }} </a>
+        </p>
+        <p class="text-center">
+            <strong>Expertise :</strong> {{ object.expertise }}
+        </p>
+        <p class="text-center">
+            <strong>Architect :</strong> {{ object.architect }}
+        </p>
+        <p class="text-center">
+            <strong>Year :</strong> {{ object.year }}
+        </p>
 
-    <div class="container">
-        <h2>Gallery</h2>
-    </div>
 
-    <div class="" id="gallery">
-        {% if image_list|length > 0 %}
-            <div class="row justify-content-start">
+        <div class="jumbotron">
+            <header class="section-header">
+                <h4>Gallery</h4>
+            </header>
+        </div>
+        <div class="" id="gallery">
+            {% if image_list|length > 0 %}
+                <div class="row justify-content-start">
 
-                {% for image in image_list %}
-                    <div class="gallery-image">
+                    {% for image in image_list %}
+                        <div class="gallery-image">
 
 
-                        <a href="{{ MEDIA_URL }}{{ image.image }}"
-                           class="glightbox hvrbox col-md-4 fadeIn "
-                           data-title="{{ image.image_description }} at {{ image.project.project_name }} by {{ image.project.client.client_name }}">
+                            <a href="{{ MEDIA_URL }}{{ image.image }}"
+                               class="glightbox hvrbox col-md-3 fadeIn "
+                               data-title="{{ image.image_description }} at {{ image.project.project_name }} by {{ image.project.client.client_name }}">
 
-                            <img class="img-responsive" src="{{ MEDIA_URL }}{{ image.image }}">
+                                <img class="img-responsive" src="{{ MEDIA_URL }}{{ image.image }}">
 
-                            <div class="hvrbox-layer_top">
-                                <div class="hvrbox-text">
-                                    {{ image.project.project_name }}
-                                    by {{ image.project.client.client_name }}, {{ image.project.city }}
-                                    <br/>
-                                    <br/>
-                                    Click to enlarge
+                                <div class="hvrbox-layer_top">
+                                    <div class="hvrbox-text">
+                                        {{ image.project.project_name }}
+                                        by {{ image.project.client.client_name }}, {{ image.project.city }}
+                                        <br/>
+                                        <br/>
+                                        Click to enlarge
 
-                                    <div class="hvrbox-text_mobile">Tap again to go further</div>
+                                        <div class="hvrbox-text_mobile">Tap again to go further</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
 
-                {% endfor %}
+                    {% endfor %}
 
-            </div>
-        {% else %}
-            <div class="jumbotron justify-content-center">
-                <h4 align="center">Coming Soon</h4>
-            </div>
-        {% endif %}
+                </div>
+            {% else %}
+                <div class="jumbotron justify-content-center">
+                    <h4 align="center">Coming Soon</h4>
+                </div>
+            {% endif %}
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script>
         var lightbox = GLightbox();
-
-
-
-
 
 
     </script>

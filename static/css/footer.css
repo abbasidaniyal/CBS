@@ -22,3 +22,7 @@ footer a:hover {
     background-color: #b93131;
     color: white;
 }
+
+footer{
+    margin-top: 50px;
+}

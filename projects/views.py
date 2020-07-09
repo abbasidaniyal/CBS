@@ -6,10 +6,12 @@ from projects.models import GalleryImage, Project, Client
 
 class ProjectListView(ListView):
     model = Project
+    ordering = ["project_name"]
 
 
 class ProjectDetailView(DetailView):
     model = Project
+    slug_field = "slug"
 
     def get_context_data(self, **kwargs):
         context = super(ProjectDetailView, self).get_context_data(**kwargs)
@@ -19,15 +21,17 @@ class ProjectDetailView(DetailView):
 
 class ClientListView(ListView):
     model = Client
+    ordering = ["client_name"]
 
 
 class ClientDetailView(DetailView):
     model = Client
+    slug_field = "slug"
 
     def get_context_data(self, **kwargs):
         context = super(ClientDetailView, self).get_context_data(**kwargs)
         context["image_list"] = GalleryImage.objects.filter(
-            project=Project.objects.filter(client=self.get_object())
+            project__in=Project.objects.filter(client=self.get_object())
         )
         context["project_list"] = Project.objects.filter(client=self.get_object())
         return context
