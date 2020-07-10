@@ -1,0 +1,8 @@
+{
+    "ignoredFiles": [
+	"static/admin/*",
+	"static/rest_framework/*",
+	"static/third_party/*"
+    ],
+    "aggressiveCompression": false
+}
