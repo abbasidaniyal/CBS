@@ -1,20 +1,26 @@
 language: python3
-
 install:
-  - pip install -q -r requirements.txt
+- pip install -q -r requirements.txt
 before_script:
-  - touch .env
-  - echo "DJANGO_SETTINGS_MODULE=cbs.settings" >> .env
-  - echo "SECRET_KEY=foo" >> .env
-  - python manage.py migrate --noinput
-  - python manage.py collectstatic  --noinput
+- touch .env
+- echo "DJANGO_SETTINGS_MODULE=cbs.settings" >> .env
+- echo "SECRET_KEY=foo" >> .env
+- python manage.py migrate --noinput
+- python manage.py collectstatic  --noinput
+addons:
+- ssh_known_hosts: "${HOST_IP}"
 script:
-  - python manage.py test
+- python manage.py test
 before_deploy:
-  - echo ${KEY} > /tmp/deploy_rsa 
-  - chmod 600 /tmp/deploy_rsa
+- echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+- openssl aes-256-cbc -K $encrypted_f5c345457a7b_key -iv $encrypted_f5c345457a7b_iv
+  -in deploy/connectbuild.cer.enc -out /tmp/deploy.cer -d
+- eval "$(ssh-agent -s)"
+- chmod 600 /tmp/deploy.cer
+- ssh-add /tmp/deploy.cer
 deploy:
   provider: script
   script: bash deploy/deploy.sh
   on:
     branch: master
+
