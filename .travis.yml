@@ -9,7 +9,7 @@ before_script:
   - python manage.py migrate --noinput
   - python manage.py collectstatic  --noinput
 addons:
-  ssh_known_hosts: "${HOST_IP}"
+  - ssh_known_hosts: "${HOST_IP}"
 script:
   - python manage.py test
 before_deploy:
