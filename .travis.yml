@@ -1,0 +1,17 @@
+language: python3
+
+install:
+  - pip install -q -r requirements.txt
+before_script:
+  - touch .env
+  - echo "DJANGO_SETTINGS_MODULE=cbs.settings" >> .env
+  - echo "SECRET_KEY=foo" >> .env
+  - python manage.py migrate --noinput
+  - python manage.py collectstatic  --noinput
+script:
+  - python manage.py test
+deploy:
+  provider: script
+  script: bash deploy/deploy.sh
+  on:
+    branch: master
