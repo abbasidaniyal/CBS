@@ -1,4 +1,4 @@
-ssh -o "StrictHostKeyChecking=no" -i /tmp/deploy_rsa -A ${HOST_USER}@${HOST_IP} << EOT
+ssh -o "StrictHostKeyChecking=no" -i connectbuild.cer  -A ${HOST_USER}@${HOST_IP} << EOT
 cd /home/website/CBS
 git pull origin master
 source env/bin/activate
