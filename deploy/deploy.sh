@@ -1,4 +1,3 @@
-echo ${KEY} > /tmp/deploy_rsa 
 ssh -o "StrictHostKeyChecking=no" -i /tmp/deploy_rsa -A ${HOST_USER}@${HOST_IP} << EOT
 cd /home/website/CBS
 git pull origin master

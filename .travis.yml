@@ -10,6 +10,9 @@ before_script:
   - python manage.py collectstatic  --noinput
 script:
   - python manage.py test
+before_deploy:
+  - echo ${KEY} > /tmp/deploy_rsa 
+  - chmod 600 /tmp/deploy_rsa
 deploy:
   provider: script
   script: bash deploy/deploy.sh
