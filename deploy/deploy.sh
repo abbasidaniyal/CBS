@@ -1,5 +1,6 @@
 ssh -o "StrictHostKeyChecking=no" -i /tmp/deploy.cer  -A ${HOST_USER}@${HOST_IP} << EOT
 cd /home/website/CBS
+git stash
 git pull origin master
 source env/bin/activate
 pip install -r requirements.txt
