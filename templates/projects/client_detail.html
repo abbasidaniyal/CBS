@@ -1,9 +1,15 @@
 {% extends 'core/base.html' %}
-{% block content %}
-    {% load static %}
+
+{% load static %}
+
+{% block meta %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
     <link rel="stylesheet" href="{% static "css/gallery_image.css" %}">
     <link rel="stylesheet" href="{% static "css/client_list.css" %}">
+{% endblock %}
+
+{% block content %}
+
     <div class="container">
 
         <a href="{{ object.client_website }}">
@@ -33,7 +39,11 @@
                             <!-- Card image -->
                             <div class="view img-overlay">
                                 <img class="card-img-top"
-                                     src="{{ MEDIA_URL }}{{ project.cover_image.image }}"
+                                     src="{% if project.cover_image.image %}
+                                        {{ MEDIA_URL }}{{ project.cover_image.image }}
+                                     {% else %}
+                                        {{ MEDIA_URL }}{{ object.client_logo }}
+                                     {% endif %}"
                                      alt="{{ project.project_name }}">
                                 <a>
                                     <div class="mask rgba-white-slight"></div>
@@ -46,7 +56,7 @@
                                 <h4 class="card-title">{{ project.project_name }}</h4>
                                 <h6 class="card-subtitle mb-2 text-muted">
                                     <a class="card-link"
-                                       href="{% url 'client-detail' project.client.slug%}">{{ project.client.client_name }}</a>
+                                       href="{% url 'client-detail' project.client.slug %}">{{ project.client.client_name }}</a>
                                 </h6>
                                 <hr>
                                 <p class="card-text">
@@ -125,11 +135,12 @@
             {% endif %}
         </div>
     </div>
+
+{% endblock %}
+
+{% block script %}
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script>
         var lightbox = GLightbox();
-
-
     </script>
-
 {% endblock %}

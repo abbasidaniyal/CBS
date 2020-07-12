@@ -1,9 +1,14 @@
 {% extends 'core/base.html' %}
+{% load static %}
+
+{% block meta %}
+    <link rel="stylesheet" href="{% static "css/project_list.css" %}">
+{% endblock %}
+
 {% block content %}
 
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static "css/client_list.css" %}">
+
     <div class="container">
 
 
@@ -21,8 +26,13 @@
                     <div class="card text-center border-n">
                         <!-- Card image -->
                         <div class="view img-overlay">
+
                             <img class="card-img-top"
-                                 src="{{ MEDIA_URL }}{{ project.cover_image.image }}"
+                                 src="{% if project.cover_image.image %}
+                                        {{ MEDIA_URL }}{{ project.cover_image.image }}
+                                     {% else %}
+                                        {{ MEDIA_URL }}{{ project.client.client_logo }}
+                                     {% endif %}"
                                  alt="{{ project.project_name }}">
                             <a>
                                 <div class="mask rgba-white-slight"></div>
@@ -54,8 +64,6 @@
                             <p class="card-text">
                                 {{ project.expertise }}
                             </p>
-
-
                             <a href="{% url 'project-detail' project.slug %}" class="card-link">
                                 Know More
                             </a>
@@ -67,7 +75,5 @@
             {% endfor %}
         </div>
         <!-- Card Light -->
-
-
     </div>
 {% endblock %}

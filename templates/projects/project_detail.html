@@ -1,10 +1,13 @@
 {% extends 'core/base.html' %}
-{% block content %}
-    {% load static %}
+{% load static %}
+
+{% block meta %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
     <link rel="stylesheet" href="{% static "css/gallery_image.css" %}">
     <link rel="stylesheet" href="{% static "css/client_list.css" %}">
+{% endblock %}
 
+{% block content %}
     <div class="container">
         <div class="jumbotron">
             <header class="section-header">
@@ -75,11 +78,13 @@
             {% endif %}
         </div>
     </div>
+
+
+{% endblock %}
+
+{% block script %}
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script>
         var lightbox = GLightbox();
-
-
     </script>
-
 {% endblock %}
