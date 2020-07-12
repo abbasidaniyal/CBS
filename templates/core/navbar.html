@@ -9,7 +9,7 @@
             {% if home_page %}
 
                 <a class="scrollto" href="#top"><img class="cbs-logo" src="{% static "images/logo.png" %}"
-                                                      alt="Connect Building Solution"
+                                                     alt="Connect Building Solution"
                 ></a>
             {% else %}
 
@@ -45,8 +45,8 @@
             </div>
 
             <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link {{ gallery_page }}" href="{% url 'project-list' %}">Projects</a>
-                <a class="nav-item nav-link {{ gallery_page }}" href="{% url 'client-list' %}">Clients</a>
+                <a class="nav-item nav-link {{ project_page }}" href="{% url 'project-list' %}">Projects</a>
+                <a class="nav-item nav-link {{ client_page }}" href="{% url 'client-list' %}">Clients</a>
                 <a class="nav-item nav-link {{ gallery_page }}" href="{% url 'gallery' %}">Gallery</a>
                 <a class="nav-item nav-link {{ contact_page }}" href="{% url 'contact_page' %}">Contact Us</a>
 

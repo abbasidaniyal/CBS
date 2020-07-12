@@ -1,5 +1,3 @@
-
-
 .dropdown {
     position: relative;
     display: inline-block;
@@ -68,8 +66,9 @@
 }
 
 .nav-item {
-    font-size: 18px;
-    color: black
+    font-size: 20px;
+    color: black;
+    font-weight: 600;
 }
 
 .navbar img {

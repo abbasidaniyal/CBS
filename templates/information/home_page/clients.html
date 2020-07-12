@@ -9,12 +9,12 @@
                     wide group of organisations and corporations. Our connections run deep and our associations, everlasting.</p>
             </header>
 
-            <section class="customer-logos slider" id="clients">
+            <section class="customer-logos slider">
                 {% for client in clients %}
                     <a href="{% url 'client-detail' client.slug %}">
                         <div class="slide">
                             <div class="container" style=" height: 180px; width: 100%;">
-                                <img src="{{ MEDIA_URL }}{{ client.client_logo }}">
+                                <img src="{{ MEDIA_URL }}{{ client.client_logo }}" alt="{{ client.client_name }}" >
                             </div>
                             <div style="text-align: center;color: black">
                                 {{ client.client_name }}
