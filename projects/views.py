@@ -7,11 +7,13 @@ from projects.models import GalleryImage, Project, Client
 class ProjectListView(ListView):
     model = Project
     ordering = ["project_name"]
+    extra_context = {"project_page": "active"}
 
 
 class ProjectDetailView(DetailView):
     model = Project
     slug_field = "slug"
+    extra_context = {"project_page": "active"}
 
     def get_context_data(self, **kwargs):
         context = super(ProjectDetailView, self).get_context_data(**kwargs)
@@ -22,11 +24,13 @@ class ProjectDetailView(DetailView):
 class ClientListView(ListView):
     model = Client
     ordering = ["client_name"]
+    extra_context = {"client_page": "active"}
 
 
 class ClientDetailView(DetailView):
     model = Client
     slug_field = "slug"
+    extra_context = {"client_page": "active"}
 
     def get_context_data(self, **kwargs):
         context = super(ClientDetailView, self).get_context_data(**kwargs)
