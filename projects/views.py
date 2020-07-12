@@ -7,7 +7,7 @@ from projects.models import GalleryImage, Project, Client
 class ProjectListView(ListView):
     model = Project
     ordering = ["project_name"]
-    extra_context = {"project_page":"active"}
+    extra_context = {"project_page": "active"}
 
 
 class ProjectDetailView(DetailView):
