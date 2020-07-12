@@ -1,7 +1,12 @@
 {% extends 'core/base.html' %}
-{% block content %}
-    {% load static %}
+{% load static %}
+
+{% block meta %}
     <link rel="stylesheet" href="{% static "css/client_list.css" %}">
+{% endblock %}
+
+{% block content %}
+
     <div class="container">
 
 
@@ -46,8 +51,6 @@
                 </div>
             {% endfor %}
         </div>
-        <!-- Card Light -->
-
 
     </div>
 {% endblock %}
