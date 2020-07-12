@@ -1,5 +1,11 @@
 {% extends 'core/base.html' %}
-
+{% load static %}
+{% block meta %}
+    <link rel="stylesheet" href="{% static "css/carousel.css" %}">
+    <link rel="stylesheet" href="{% static "css/expertise.css" %}">
+    <link rel="stylesheet" href="{% static "css/facts.css" %}">
+    <link rel="stylesheet" href="{% static "css/clients.css" %}">
+{% endblock %}
 {% block content %}
 
     {% include 'information/home_page/carousel.html' %}
@@ -10,5 +16,9 @@
 
     {% include "information/home_page/clients.html" %}
 
+
+{% endblock %}
+
+{% block script %}
 
 {% endblock %}

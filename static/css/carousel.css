@@ -53,6 +53,11 @@
 
 }
 
+#intro .carousel-background picture {
+  max-width: 100%;
+
+}
+
 #intro .carousel-content {
   text-align: center;
   margin-top: 60vh;
