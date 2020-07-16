@@ -16,38 +16,38 @@
             </header>
         </div>
 
-        <div class="row justify-content-start">
+        <div class="row justify-content-center">
 
             {% for client in object_list %}
                 <!-- Card Light -->
-                <div class="shadow col-lg-3  bg-white rounded">
-                    <div class="card text-center border-n">
-                        <!-- Card image -->
-                        <div class="view img-overlay">
-                            <img class="card-img-top img-fluid"
-                                 src="{{ MEDIA_URL }}{{ client.client_logo }}"
-                                 alt="{{ client.client_name }}">
-                            <a>
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
-                        </div>
+                <div class="col-lg-3  bg-white rounded card text-center ">
 
-                        <!-- Card content -->
-                        <div class="card-body ">
-                            <!-- Title -->
-                            <h4 class="card-title">{{ client.client_name }}</h4>
-                            <hr>
+                    <!-- Card image -->
+                    <div class="view img-overlay">
+                        <img class="card-img-top img-fluid"
+                             src="{{ MEDIA_URL }}{{ client.client_logo }}"
+                             alt="{{ client.client_name }}">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
 
-                            <a href="{{ client.client_website }}" class="card-link">
-                                Website
-                            </a>
-                            <a href="{% url 'client-detail' client.slug %}" class="card-link">
-                                Projects
-                            </a>
+                    <!-- Card content -->
+                    <div class="card-body ">
+                        <!-- Title -->
+                        <h4 class="card-title">{{ client.client_name }}</h4>
+                        <hr>
 
-                        </div>
+                        <a href="{{ client.client_website }}" class="card-link">
+                            Website
+                        </a>
+                        <a href="{% url 'client-detail' client.slug %}" class="card-link">
+                            Projects
+                        </a>
 
                     </div>
+
+
                 </div>
             {% endfor %}
         </div>

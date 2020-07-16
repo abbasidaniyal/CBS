@@ -1,11 +1,21 @@
 .img-fluid {
-    height: 150px;
+    /*height: 150px;*/
     padding: 20px;
+    position: initial;
+    margin: auto;
+    width: auto;
+
 }
 
 .img-overlay {
     position: relative;
+    background-size: contain;
     overflow: hidden;
+    vertical-align: middle;
+    display: flex;
+
+    height: 250px;
+    text-align: center;
 }
 
 .img-overlay:after {
@@ -33,14 +43,15 @@
 .card {
     text-align: center;
     box-shadow: 5px 5px gray;
-    margin: 20px 5px;
-    max-width: 300px;
+    margin: 20px;
+
+    width: 300px;
     vertical-align: middle;
+    height: 400px;
 }
 
 .shadow {
     text-align: -webkit-center;
-
 }
 
 

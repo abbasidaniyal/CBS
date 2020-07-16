@@ -19,14 +19,14 @@
         <!-- Grid row -->
         <div class="" id="gallery">
             {% if images|length > 0 %}
-                <div class="row justify-content-start">
+                <div class="row justify-content-center">
 
                     {% for image in images %}
-                        <div class="gallery-image">
+                        <div class="gallery-image col-md-5">
 
 
                             <a href="{{ MEDIA_URL }}{{ image.image }}"
-                               class="glightbox hvrbox col-md-4 fadeIn "
+                               class="glightbox hvrbox fadeIn "
                                data-title="{{ image.image_description }} at {{ image.project.project_name }} by {{ image.project.client.client_name }}">
 
                                 <img class="img-responsive" src="{{ MEDIA_URL }}{{ image.image }}">
