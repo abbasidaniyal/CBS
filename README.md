@@ -86,7 +86,7 @@ Check status
 
 To see logs
 ```
-sudo journalctl -u gunicorn
+sudo journalctl -u website
 ```
 
 To propogate changes
