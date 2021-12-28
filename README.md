@@ -48,7 +48,7 @@ pip install -r requirements.txt
 
 7. Setup secrets
 ```
-cp .env_template .env
+cp .env_sample .env
 ```
 
 Fill in the required values in .env file
@@ -62,20 +62,23 @@ python manage.py runserver
 gunicorn --bind 0.0.0.0:8000 cbs.wsgi
 ```
 
+9. Create superadmin
+```
+python manage.py createsuperuser
+```
 
 10. Create deamon job
 Switch to user with sudo permission
 
 Create service file
 ```
-sudo nano /etc/systemd/system/website.service
 cp deploy/website.service /etc/systemd/system/website.service
 
 ```
-Start and enable gunicorn
+Start and enable website
 ```
-sudo systemctl start gunicorn
-sudo systemctl enable gunicorn
+sudo systemctl start website
+sudo systemctl enable website
 ```
 
 Check status
@@ -97,6 +100,7 @@ Copy conf from deploy/nginx.conf and add to /etc/nginx/sites-available/website
 
 Enable available site
 ```
+sudo cp deploy/nginx.conf /etc/nginx/sites-available/website
 sudo ln -s /etc/nginx/sites-available/website /etc/nginx/sites-enabled
 ```
 
@@ -114,7 +118,6 @@ sudo apt-get install python3-certbot-nginx
 Configure firewall
 ```
 sudo ufw allow 'Nginx Full'
-sudo ufw delete allow 'Nginx HTTP'
 ```
 
 Set dns entries to the IP of the machine
@@ -125,3 +128,25 @@ Get certificate
 sudo certbot --nginx -d connectbuild.com -d www.connectbuild.com
 ```
 Note: Setup http to https redirect
+
+
+## Updating code
+
+1. Pull new code
+```
+su website
+cd website
+git pull origin master
+```
+
+2. Update requirements and run migrations 
+```
+pip install -r requirements.txt
+python manage.py collectstatic  --noinput
+python manage.py migrate  --noinput
+```
+
+3. Restart service 
+```
+sudo systemctl restart website.service
+```
