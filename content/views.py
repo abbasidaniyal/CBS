@@ -42,6 +42,7 @@ class QueryPageView(SuccessMessageMixin, CreateView):
                    """,
             form.data.get("email"),
             [settings.EMAIL_HOST_USER],
+            fail_silently=True
         )
 
         return response
