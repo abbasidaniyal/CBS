@@ -18,8 +18,10 @@
             </header>
         </div>
 
-        <div class="row justify-content-start">
+        {% if object_list|length > 0 %}
 
+        <div class="row justify-content-start">
+            
             {% for project in object_list %}
                 <!-- Card Light -->
                 <div class="shadow col-lg-4  bg-white rounded">
@@ -72,8 +74,12 @@
 
                     </div>
                 </div>
+            
             {% endfor %}
         </div>
+        {% else %}
+                {% include "core/coming_soon.html" %}
+        {% endif %}
         <!-- Card Light -->
     </div>
 {% endblock %}

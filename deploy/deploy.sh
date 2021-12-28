@@ -1,11 +1,10 @@
-ssh -o "StrictHostKeyChecking=no" -i /tmp/deploy.cer  -A ${HOST_USER}@${HOST_IP} << EOT
-cd /home/website/CBS
-sudo git stash
-sudo git pull origin master
+#! /bin/bash
+
 source env/bin/activate
+echo "Installing requirements"
 pip install -r requirements.txt
 python manage.py collectstatic  --noinput
+echo "Migrating database"
 python manage.py migrate  --noinput
 sudo service website restart
 echo "Deploy Finished"
-EOT
