@@ -16,6 +16,8 @@
             </header>
         </div>
 
+        {% if object_list|length > 0 %}
+
         <div class="row justify-content-center">
 
             {% for client in object_list %}
@@ -51,6 +53,9 @@
                 </div>
             {% endfor %}
         </div>
+        {% else %}
+                {% include "core/coming_soon.html" %}
+        {% endif %}
 
     </div>
 {% endblock %}
