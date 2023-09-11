@@ -30,8 +30,9 @@ class Client(models.Model):
         return self.client_name
 
     def save(self, *args, **kwargs):
-        value = self.client_name
-        self.slug = generate_unique_slug(Client, value)
+        if not self.slug:
+            value = self.client_name
+            self.slug = generate_unique_slug(Client, value)
         super().save(*args, **kwargs)
 
     client_name = models.CharField("Client's Name", max_length=100)
@@ -58,15 +59,16 @@ class Project(models.Model):
         return self.project_name
 
     def save(self, *args, **kwargs):
-        value = self.project_name
-        self.slug = generate_unique_slug(Project, value)
+        if not self.slug:
+            value = self.project_name
+            self.slug = generate_unique_slug(Project, value)
         super().save(*args, **kwargs)
 
     client = models.ForeignKey(Client, on_delete=models.DO_NOTHING, blank=True)
     project_name = models.CharField("Project Name", max_length=100)
     city = models.CharField("Site Location", max_length=200)
     project_description = models.TextField("Project Description", max_length=300,)
-    architect = models.CharField("Architect", max_length=50, blank=True)
+    architect = models.CharField("Architect", max_length=50, blank=True) # Can be a FK in future
     expertise = MultiSelectField(choices=EXPERTISE, default=EXPERTISE,)
     year = models.IntegerField("Year Completed")
     cover_image = models.ForeignKey(
