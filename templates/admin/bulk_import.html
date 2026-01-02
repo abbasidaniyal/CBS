@@ -1,0 +1,433 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+    <style>
+        .bulk-import-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .upload-section {
+            background: #fff;
+            border: 2px solid #417690;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .upload-section h2 {
+            margin-top: 0;
+            color: #417690;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .step-indicator {
+            display: inline-block;
+            background: #417690;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .requirements-box {
+            background: #e8f4f8;
+            border-left: 4px solid #0066cc;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .requirements-box h4 {
+            margin-top: 0;
+            color: #0066cc;
+        }
+        .requirement-item {
+            display: flex;
+            align-items: start;
+            margin: 8px 0;
+        }
+        .requirement-item::before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .help-section {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .help-section h3 {
+            margin-top: 0;
+            color: #495057;
+            font-size: 18px;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+        }
+        .help-section code {
+            background: #fff;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+            border: 1px solid #f8d7da;
+        }
+        .help-section pre {
+            background: #fff;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            border: 1px solid #dee2e6;
+            font-size: 13px;
+        }
+        .example-structure {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #212529;
+        }
+        .csv-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        .csv-table th {
+            background: #417690;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .csv-table td {
+            padding: 8px 10px;
+            border: 1px solid #dee2e6;
+            background: #fff;
+        }
+        .csv-table tr:nth-child(even) td {
+            background: #f8f9fa;
+        }
+        .required-badge {
+            background: #dc3545;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        .optional-badge {
+            background: #6c757d;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+        .form-group input[type="file"] {
+            padding: 10px;
+            border: 2px dashed #417690;
+            border-radius: 4px;
+            width: 100%;
+            cursor: pointer;
+            background: #f8f9fa;
+        }
+        .form-group input[type="file"]:hover {
+            background: #e9ecef;
+            border-color: #0056b3;
+        }
+        .submit-row {
+            margin-top: 20px;
+            padding: 15px 0;
+        }
+        .submit-row input[type="submit"] {
+            background: #28a745;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .submit-row input[type="submit"]:hover {
+            background: #218838;
+        }
+        .accordion {
+            margin: 10px 0;
+        }
+        .accordion-header {
+            background: #417690;
+            color: white;
+            padding: 12px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-header:hover {
+            background: #356378;
+        }
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+        }
+        .accordion-content.active {
+            display: block;
+        }
+        .expertise-codes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .expertise-code {
+            background: #fff;
+            border: 1px solid #417690;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .expertise-code strong {
+            color: #417690;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .warning-box h4 {
+            margin-top: 0;
+            color: #856404;
+        }
+    </style>
+    <script>
+        function toggleAccordion(id) {
+            var content = document.getElementById(id);
+            content.classList.toggle('active');
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+<div class="bulk-import-container">
+    <h1>📤 Bulk Import System</h1>
+    <p style="color: #6c757d; font-size: 16px;">Upload a zip file to import multiple Clients, Projects, and Gallery Images at once.</p>
+    
+    <div class="upload-section">
+        <h2><span class="step-indicator">1</span> Select Your Zip File</h2>
+        
+        <div class="requirements-box">
+            <h4>✓ What Your Zip Must Contain:</h4>
+            <div class="requirement-item">Two CSV files: <code>clients.csv</code> and <code>projects.csv</code></div>
+            <div class="requirement-item">Image folders organized by client/project names</div>
+            <div class="requirement-item">Images will be automatically discovered from folder structure</div>
+            <div class="requirement-item">CSV files must have correct column headers (see examples below)</div>
+        </div>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="id_zip_file" style="font-weight: 600; font-size: 16px; display: block; margin-bottom: 10px;">
+                    Choose Zip File:
+                </label>
+                {{ form.zip_file }}
+                <p style="color: #6c757d; margin-top: 8px; font-size: 14px;">
+                    {{ form.zip_file.help_text }}
+                </p>
+            </div>
+            
+            <div class="submit-row">
+                <input type="submit" value="🚀 Upload and Import" />
+            </div>
+        </form>
+    </div>
+    
+    <div class="help-section">
+        <h3>📦 Step 2: Structure Your Zip File Correctly</h3>
+        <p style="font-size: 15px; margin-bottom: 20px;">Your zip file <strong>must</strong> follow this exact structure:</p>
+        <pre class="example-structure">my_import.zip
+├── clients.csv          <span style="color: #28a745;">← Required: Client data (NO image paths)</span>
+├── projects.csv         <span style="color: #28a745;">← Required: Project data (NO image paths)</span>
+├── clients/             <span style="color: #17a2b8;">← Client logos (named ClientName.jpg)</span>
+│   ├── ABC Corporation.jpg
+│   └── XYZ Industries.png
+└── projects/            <span style="color: #17a2b8;">← Project images (auto-discovered)</span>
+    ├── New Office Building/
+    │   ├── image1.jpg
+    │   ├── image2.jpg
+    │   └── image3.png
+    └── Shopping Mall/
+        ├── photo1.jpg
+        └── photo2.jpg</pre>
+        
+        <div class="warning-box">
+            <h4>⚠️ Important: Simplified Structure!</h4>
+            <ul style="margin: 5px 0;">
+                <li><strong>No need to list images in CSV files</strong> - they're automatically discovered from folders</li>
+                <li><strong>Client logos:</strong> Place directly in <code>clients/</code> folder named as <code>ClientName.jpg</code></li>
+                <li><strong>Project images:</strong> Place in <code>projects/ProjectName/</code> folder</li>
+                <li>All images in project folders become gallery images</li>
+                <li>First image in each project folder becomes the cover image</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="help-section">
+        <h3>📄 Step 3: Prepare Your CSV Files</h3>
+        
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion('clients-csv')">
+                <span><strong>clients.csv</strong> - Client Information</span>
+                <span>▼</span>
+            </div>
+            <div id="clients-csv" class="accordion-content active">
+                <table class="csv-table">
+                    <thead>
+                        <tr>
+                            <th>Column Name</th>
+                            <th>Description</th>
+                            <th>Required?</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>client_name</code></td>
+                            <td>Client's full name (must match folder name)</td>
+                            <td><span class="required-badge">REQUIRED</span></td>
+                            <td>ABC Corporation</td>
+                        </tr>
+                        <tr>
+                            <td><code>client_website</code></td>
+                            <td>Client's website URL</td>
+                            <td><span class="optional-badge">OPTIONAL</span></td>
+                            <td>https://www.abc.com</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Note:</strong> Logo images must be named exactly as the client name with an image extension (e.g., <code>ABC Corporation.jpg</code>) and placed directly in the <code>clients/</code> folder.</p>
+                <p><strong>Example CSV:</strong></p>
+                <pre>client_name,client_website
+ABC Corporation,https://www.abc.com
+XYZ Industries,https://www.xyz.com
+Tech Solutions,</pre>
+            </div>
+        </div>
+        
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion('projects-csv')">
+                <span><strong>projects.csv</strong> - Project Details</span>
+                <span>▼</span>
+            </div>
+            <div id="projects-csv" class="accordion-content">
+                <table class="csv-table">
+                    <thead>
+                        <tr>
+                            <th>Column Name</th>
+                            <th>Description</th>
+                            <th>Required?</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>project_name</code></td>
+                            <td>Project's full name (must match folder name)</td>
+                            <td><span class="required-badge">REQUIRED</span></td>
+                            <td>New Office Building</td>
+                        </tr>
+                        <tr>
+                            <td><code>client_name</code></td>
+                            <td>Must match a client from clients.csv</td>
+                            <td><span class="optional-badge">OPTIONAL</span></td>
+                            <td>ABC Corporation</td>
+                        </tr>
+                        <tr>
+                            <td><code>city</code></td>
+                            <td>Project location/city</td>
+                            <td><span class="required-badge">REQUIRED</span></td>
+                            <td>Mumbai</td>
+                        </tr>
+                        <tr>
+                            <td><code>project_description</code></td>
+                            <td>Project description (max 300 chars)</td>
+                            <td><span class="required-badge">REQUIRED</span></td>
+                            <td>Modern office complex</td>
+                        </tr>
+                        <tr>
+                            <td><code>architect</code></td>
+                            <td>Architect's name</td>
+                            <td><span class="optional-badge">OPTIONAL</span></td>
+                            <td>John Architect</td>
+                        </tr>
+                        <tr>
+                            <td><code>expertise</code></td>
+                            <td>Comma-separated codes (see below)</td>
+                            <td><span class="required-badge">REQUIRED</span></td>
+                            <td>SS,CD,TMS</td>
+                        </tr>
+                        <tr>
+                            <td><code>year</code></td>
+                            <td>Year completed (4-digit number)</td>
+                            <td><span class="required-badge">REQUIRED</span></td>
+                            <td>2024</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h4 style="margin-top: 20px;">Expertise Codes:</h4>
+                <div class="expertise-codes">
+                    <div class="expertise-code"><strong>SS</strong> - Steel Structures</div>
+                    <div class="expertise-code"><strong>TMS</strong> - Tensile Membrane Structures</div>
+                    <div class="expertise-code"><strong>RF</strong> - Roofings</div>
+                    <div class="expertise-code"><strong>CD</strong> - Claddings</div>
+                    <div class="expertise-code"><strong>SC</strong> - Studio Connect</div>
+                </div>
+                
+                <p><strong>Note:</strong> Gallery images are automatically discovered from <code>projects/ProjectName/</code> folder. All images found will be added to the gallery. The first image becomes the cover image.</p>
+                <p><strong>Example CSV:</strong></p>
+                <pre>project_name,client_name,city,project_description,architect,expertise,year
+New Office Building,ABC Corporation,Mumbai,Modern office complex,John Architect,"SS,CD",2024
+Shopping Mall,XYZ Industries,Delhi,Large retail space,Jane Designer,"TMS,RF",2023</pre>
+            </div>
+        </div>
+    </div>
+    
+    <div class="help-section" style="background: #d1ecf1; border-color: #17a2b8;">
+        <h3 style="color: #0c5460;">💡 Important Tips & Notes</h3>
+        <ul style="line-height: 1.8;">
+            <li><strong>Simplified Process:</strong> No need to list images in CSV - they're automatically discovered from folders!</li>
+            <li><strong>Import Order:</strong> Data is processed automatically: Clients → Projects → Gallery Images (auto-discovered)</li>
+            <li><strong>Client Logos:</strong> Name files as <code>ClientName.jpg</code> directly in <code>clients/</code> folder (no subfolders needed)</li>
+            <li><strong>Project Images:</strong> Place all images in <code>projects/ProjectName/</code> folder</li>
+            <li><strong>Automatic Selection:</strong> First image in project folder = cover image</li>
+            <li><strong>Updates:</strong> Existing records (matched by name) will be updated with new data</li>
+            <li><strong>Incremental Updates:</strong> Just include new/updated records in your CSV - existing data won't be deleted</li>
+            <li><strong>Supported Formats:</strong> JPG, JPEG, PNG, GIF (case-insensitive)</li>
+            <li><strong>Validation:</strong> The system will validate your zip structure and show detailed errors if anything is wrong</li>
+            <li><strong>Read-Only Admin:</strong> Standard admin views are read-only - all updates should use this bulk import</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

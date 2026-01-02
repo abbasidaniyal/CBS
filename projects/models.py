@@ -87,13 +87,10 @@ class GalleryImage(models.Model):
     """
 
     def __str__(self):
-        return (
-            self.image_description
-            + " @ "
-            + self.project.project_name
-            + ", "
-            + self.project.city
-        )
+        if self.project:
+            desc = self.image_description or "Image"
+            return f"{desc} @ {self.project.project_name}, {self.project.city}"
+        return self.image_description or "Gallery Image"
 
     image = models.ImageField("Image", upload_to="gallery")
     image_description = models.CharField("Image Description", max_length=50, blank=True)

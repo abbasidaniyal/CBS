@@ -1,0 +1,13 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+{{ block.super }}
+
+<div style="margin-top: 20px; padding: 20px; background: #f0f8ff; border: 2px solid #417690; border-radius: 8px;">
+    <h2 style="color: #417690; margin-top: 0;">Bulk Import</h2>
+    <p style="font-size: 15px; margin-bottom: 15px;">Upload clients, projects, and gallery images all at once using a zip file.</p>
+    <a href="{% url 'bulk_import' %}" style="display: inline-block; background: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+        Go to Bulk Import
+    </a>
+</div>
+{% endblock %}

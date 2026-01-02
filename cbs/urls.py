@@ -18,9 +18,11 @@ from django.conf.urls import include
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from projects.admin import bulk_import_view
 
 urlpatterns = (
     [
+        path("admin/bulk-import/", admin.site.admin_view(bulk_import_view), name='bulk_import'),
         path("admin/", admin.site.urls),
         path("", include("content.urls")),
         path("", include("projects.urls")),
